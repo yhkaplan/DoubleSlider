@@ -9,21 +9,21 @@ class MyViewController : UIViewController {
         let view = UIView()
         view.backgroundColor = .white
 
-        let frame = CGRect(x: 0, y: 50, width: 375, height: 32)
-        let control = CustomControl(frame: frame)
+        let frame = CGRect(x: 10, y: 50, width: 350, height: 32)
+        let control = MultiSlider(frame: frame)
         
         control.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         view.addSubview(control)
         
-        let frame2 = CGRect(x: 0, y: 150, width: 375, height: 10)
+        let frame2 = CGRect(x: 10, y: 150, width: 350, height: 10)
         let slider = UISlider(frame: frame2)
         view.addSubview(slider)
         
         self.view = view
     }
     
-    @objc func printVal(_ control: CustomControl) {
+    @objc func printVal(_ control: MultiSlider) {
         //print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
     }
 }
@@ -34,7 +34,7 @@ public enum Colors {
     static let defaultWhite = UIColor.white
 }
 
-class CustomControl: UIControl {
+class MultiSlider: UIControl {
     
     // Track values
     var minValue: Double = 0.0 {
@@ -90,9 +90,9 @@ class CustomControl: UIControl {
     }
     
     // Render components
-    let trackLayer = CustomControlTrackLayer()
-    let lowerThumbLayer = CustomControlThumbLayer()
-    let upperThumbLayer = CustomControlThumbLayer()
+    let trackLayer = MultiSliderTrackLayer()
+    let lowerThumbLayer = MultiSliderThumbLayer()
+    let upperThumbLayer = MultiSliderThumbLayer()
     
     var previousLocation = CGPoint()
     
@@ -109,15 +109,15 @@ class CustomControl: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        trackLayer.customControl = self
+        trackLayer.multiSlider = self
         trackLayer.contentsScale = UIScreen.main.scale
         layer.addSublayer(trackLayer)
         
-        lowerThumbLayer.customControl = self
+        lowerThumbLayer.multiSlider = self
         lowerThumbLayer.contentsScale = UIScreen.main.scale
         layer.addSublayer(lowerThumbLayer)
 
-        upperThumbLayer.customControl = self
+        upperThumbLayer.multiSlider = self
         upperThumbLayer.contentsScale = UIScreen.main.scale
         layer.addSublayer(upperThumbLayer)
         
@@ -205,8 +205,8 @@ class CustomControl: UIControl {
     }
 }
 
-class CustomControlThumbLayer: CALayer {
-    weak var customControl: CustomControl?
+class MultiSliderThumbLayer: CALayer {
+    weak var multiSlider: MultiSlider?
     
     var isHighlighted: Bool = false {
         didSet {
@@ -215,7 +215,7 @@ class CustomControlThumbLayer: CALayer {
     }
     
     override func draw(in ctx: CGContext) {
-        guard let slider = customControl else { return }
+        guard let slider = multiSlider else { return }
         
         let insetSize: CGFloat = 2.0
         let thumbFrame = bounds.insetBy(dx: insetSize, dy: insetSize)
@@ -244,11 +244,11 @@ class CustomControlThumbLayer: CALayer {
     }
 }
 
-class CustomControlTrackLayer: CALayer {
-    weak var customControl: CustomControl?
+class MultiSliderTrackLayer: CALayer {
+    weak var multiSlider: MultiSlider?
     
     override func draw(in ctx: CGContext) {
-        guard let slider = customControl else { return }
+        guard let slider = multiSlider else { return }
         
         // Clip
         let cornerRadius = bounds.height * slider.roundedness / 2.0
