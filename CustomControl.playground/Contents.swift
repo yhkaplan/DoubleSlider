@@ -9,14 +9,14 @@ class MyViewController : UIViewController {
         let view = UIView()
         view.backgroundColor = .white
 
-        let frame = CGRect(x: 0, y: 0, width: 375, height: 20)
+        let frame = CGRect(x: 0, y: 50, width: 375, height: 32)
         let control = CustomControl(frame: frame)
         
         control.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         view.addSubview(control)
         
-        let frame2 = CGRect(x: 0, y: 50, width: 375, height: 10)
+        let frame2 = CGRect(x: 0, y: 150, width: 375, height: 10)
         let slider = UISlider(frame: frame2)
         view.addSubview(slider)
         
@@ -26,6 +26,12 @@ class MyViewController : UIViewController {
     @objc func printVal(_ control: CustomControl) {
         //print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
     }
+}
+
+public enum Colors {
+    static let defaultBlue = UIColor(red: 0.0, green: 0.51, blue: 0.98, alpha: 1.0)
+    static let defaultGray = UIColor(red: 0.71, green: 0.71, blue: 0.71, alpha: 1.0)
+    static let defaultWhite = UIColor.white
 }
 
 class CustomControl: UIControl {
@@ -56,19 +62,19 @@ class CustomControl: UIControl {
     }
     
     // Colors
-    var trackTintColor: UIColor = UIColor.lightGray {
+    var trackTintColor: UIColor = Colors.defaultGray {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    var trackHighlightTintColor: UIColor = UIColor.blue {
+    var trackHighlightTintColor: UIColor = Colors.defaultBlue {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    var thumbTintColor: UIColor = UIColor.white {
+    var thumbTintColor: UIColor = Colors.defaultWhite {
         didSet {
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
@@ -126,7 +132,7 @@ class CustomControl: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true) // Prevents interaction while updating
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 3) //TODO: may be incorrect
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 2.15) //TODO: may be incorrect
         trackLayer.setNeedsDisplay()
         
         //TODO: simplify below into helper methods / closures
@@ -217,15 +223,15 @@ class CustomControlThumbLayer: CALayer {
         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
         
         // Fill with shadow
-        let shadowColor = UIColor.gray.cgColor
-        ctx.setShadow(offset: CGSize(width: 0.0, height: 1.0), blur: 1.0, color: shadowColor)
+        let shadowColor = Colors.defaultGray.cgColor
+        ctx.setShadow(offset: CGSize(width: 0.0, height: 2.0), blur: 4.0, color: shadowColor)
         ctx.setFillColor(slider.thumbTintColor.cgColor)
         ctx.addPath(thumbPath.cgPath)
         ctx.fillPath()
         
         // Outline
         ctx.setStrokeColor(shadowColor)
-        ctx.setLineWidth(0.5)
+        ctx.setLineWidth(0.25)
         ctx.addPath(thumbPath.cgPath)
         ctx.strokePath()
         
