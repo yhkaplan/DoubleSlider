@@ -128,27 +128,21 @@ open class MultiSlider: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        trackLayer.multiSlider = self
-        trackLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(trackLayer)
-        
-        lowerThumbLayer.multiSlider = self
-        lowerThumbLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(lowerThumbLayer)
-
-        upperThumbLayer.multiSlider = self
-        upperThumbLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(upperThumbLayer)
-        
-        minLabel.multiSlider = self
-        minLabel.contentsScale = UIScreen.main.scale
-        layer.addSublayer(minLabel)
-        
-        maxLabel.multiSlider = self
-        maxLabel.contentsScale = UIScreen.main.scale
-        layer.addSublayer(maxLabel)
+        setupLayer(trackLayer)
+        setupLayer(lowerThumbLayer)
+        setupLayer(upperThumbLayer)
+        setupLayer(minLabel)
+        setupLayer(maxLabel)
         
         updateLayerFrames()
+    }
+    
+    // This _must_ be a generic in order to use both CALayer and MSLayer
+    // methods/parameters
+    private func setupLayer<T: MultiSliderLayer>(_ msLayer: T) {
+        msLayer.multiSlider = self
+        msLayer.contentsScale = UIScreen.main.scale
+        layer.addSublayer(msLayer)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -244,6 +238,14 @@ open class MultiSlider: UIControl {
     }
 }
 
+// This is the protocol that all CALayer/CATextLayer components
+// used by MultiSlider. It ensures they contain a weak delegate
+// to MultiSlider
+// Swift bug report about this error message: https://bugs.swift.org/browse/SR-6265
+protocol MultiSliderLayer: class where Self: CALayer  {
+    weak var multiSlider: MultiSlider? { get set }
+}
+
 // MultiSliderThumbLayer represents the each of the draggable
 // thumb layers that indicate the minimum and maximum values
 // in the range
@@ -251,7 +253,7 @@ open class MultiSlider: UIControl {
 // meaning that developers could make their own custom CALayer
 // subclass in the same amount of time as it would take to subclass
 // this one
-public class MultiSliderThumbLayer: CALayer {
+public class MultiSliderThumbLayer: CALayer, MultiSliderLayer {
     weak var multiSlider: MultiSlider?
     
     var isHighlighted: Bool = false {
@@ -296,7 +298,7 @@ public class MultiSliderThumbLayer: CALayer {
 // meaning that developers could make their own custom CALayer
 // subclass in the same amount of time as it would take to subclass
 // this one
-public class MultiSliderTrackLayer: CALayer {
+public class MultiSliderTrackLayer: CALayer, MultiSliderLayer {
     weak var multiSlider: MultiSlider?
     
     override public func draw(in ctx: CGContext) {
@@ -325,7 +327,7 @@ public class MultiSliderTrackLayer: CALayer {
     }
 }
 
-public class MultiSliderTextLayer: CATextLayer {
+public class MultiSliderTextLayer: CATextLayer, MultiSliderLayer {
     weak var multiSlider: MultiSlider?
 }
 
