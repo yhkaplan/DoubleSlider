@@ -34,7 +34,7 @@ public enum Colors {
     static let defaultWhite = UIColor.white
 }
 
-class MultiSlider: UIControl {
+open class MultiSlider: UIControl {
     
     // Track values
     var minValue: Double = 0.0 {
@@ -49,17 +49,19 @@ class MultiSlider: UIControl {
         }
     }
     
-    var lowerValue: Double = 0.2 {
+    open var lowerValue: Double = 0.2 {
         didSet {
             updateLayerFrames()
         }
     }
     
-    var upperValue: Double = 0.8 {
+    open var upperValue: Double = 0.8 {
         didSet {
             updateLayerFrames()
         }
     }
+    
+    open var stepDistance: CGFloat? = nil
     
     // Colors
     var trackTintColor: UIColor = Colors.defaultGray {
@@ -124,7 +126,7 @@ class MultiSlider: UIControl {
         updateLayerFrames()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -157,7 +159,7 @@ class MultiSlider: UIControl {
     
     // MARK: - Touch tracking
     
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         previousLocation = touch.location(in: self)
         
         if lowerThumbLayer.frame.contains(previousLocation) {
@@ -170,7 +172,7 @@ class MultiSlider: UIControl {
     }
     
     // TODO: simply this func
-    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    override open func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         
         // Check drag distance
@@ -195,7 +197,7 @@ class MultiSlider: UIControl {
         return true
     }
     
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+    override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         lowerThumbLayer.isHighlighted = false
         upperThumbLayer.isHighlighted = false
     }
@@ -205,7 +207,7 @@ class MultiSlider: UIControl {
     }
 }
 
-class MultiSliderThumbLayer: CALayer {
+open class MultiSliderThumbLayer: CALayer {
     weak var multiSlider: MultiSlider?
     
     var isHighlighted: Bool = false {
@@ -214,7 +216,7 @@ class MultiSliderThumbLayer: CALayer {
         }
     }
     
-    override func draw(in ctx: CGContext) {
+    override open func draw(in ctx: CGContext) {
         guard let slider = multiSlider else { return }
         
         let insetSize: CGFloat = 2.0
@@ -244,10 +246,10 @@ class MultiSliderThumbLayer: CALayer {
     }
 }
 
-class MultiSliderTrackLayer: CALayer {
+open class MultiSliderTrackLayer: CALayer {
     weak var multiSlider: MultiSlider?
     
-    override func draw(in ctx: CGContext) {
+    override open func draw(in ctx: CGContext) {
         guard let slider = multiSlider else { return }
         
         // Clip
