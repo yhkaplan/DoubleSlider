@@ -15,28 +15,73 @@ class MyViewController : UIViewController {
         control.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         view.addSubview(control)
+        
+        let frame2 = CGRect(x: 0, y: 50, width: 375, height: 10)
+        let slider = UISlider(frame: frame2)
+        view.addSubview(slider)
+        
         self.view = view
     }
     
     @objc func printVal(_ control: CustomControl) {
-        print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
+        //print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
     }
 }
 
 class CustomControl: UIControl {
     
     // Track values
-    var minValue = 0.0
-    var maxValue = 1.0
-    var lowerValue = 0.2
-    var upperValue = 0.8
+    var minValue: Double = 0.0 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
+    var maxValue: Double = 1.0 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
+    var lowerValue: Double = 0.2 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
+    var upperValue: Double = 0.8 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
     
     // Colors
-    var trackTintColor = UIColor.lightGray
-    var trackHighlightTintColor = UIColor.blue
-    var thumbTintColor = UIColor.white
+    var trackTintColor: UIColor = UIColor.lightGray {
+        didSet {
+            trackLayer.setNeedsDisplay()
+        }
+    }
     
-    var roundedness: CGFloat = 1.0
+    var trackHighlightTintColor: UIColor = UIColor.blue {
+        didSet {
+            trackLayer.setNeedsDisplay()
+        }
+    }
+    
+    var thumbTintColor: UIColor = UIColor.white {
+        didSet {
+            lowerThumbLayer.setNeedsDisplay()
+            upperThumbLayer.setNeedsDisplay()
+        }
+    }
+    
+    var roundedness: CGFloat = 1.0 {
+        didSet {
+            trackLayer.setNeedsDisplay()
+            lowerThumbLayer.setNeedsDisplay()
+            upperThumbLayer.setNeedsDisplay()
+        }
+    }
     
     // Render components
     let trackLayer = CustomControlTrackLayer()
@@ -78,6 +123,9 @@ class CustomControl: UIControl {
     }
     
     private func updateLayerFrames() {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true) // Prevents interaction while updating
+        
         trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 3) //TODO: may be incorrect
         trackLayer.setNeedsDisplay()
         
@@ -91,6 +139,8 @@ class CustomControl: UIControl {
         let upperX = upperThumbCenter - thumbWidth / 2.0
         upperThumbLayer.frame = CGRect(x: upperX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
+        
+        CATransaction.commit()
     }
     
     //TODO: simplify with more constants
@@ -132,12 +182,6 @@ class CustomControl: UIControl {
             upperValue = boundValue(value: upperValue, lowerValue: lowerValue, upperValue: maxValue)
         }
         
-        // update UI
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        updateLayerFrames()
-        CATransaction.commit()
-        
         // update values
         // Note: currently using target action pattern, but prob better to use swifty delegate pattern
         sendActions(for: .valueChanged)
@@ -156,17 +200,49 @@ class CustomControl: UIControl {
 }
 
 class CustomControlThumbLayer: CALayer {
-    var isHighlighted = false
     weak var customControl: CustomControl?
+    
+    var isHighlighted: Bool = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    override func draw(in ctx: CGContext) {
+        guard let slider = customControl else { return }
+        
+        let insetSize: CGFloat = 2.0
+        let thumbFrame = bounds.insetBy(dx: insetSize, dy: insetSize)
+        let cornerRadius = thumbFrame.height * slider.roundedness / 2.0
+        let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
+        
+        // Fill with shadow
+        let shadowColor = UIColor.gray.cgColor
+        ctx.setShadow(offset: CGSize(width: 0.0, height: 1.0), blur: 1.0, color: shadowColor)
+        ctx.setFillColor(slider.thumbTintColor.cgColor)
+        ctx.addPath(thumbPath.cgPath)
+        ctx.fillPath()
+        
+        // Outline
+        ctx.setStrokeColor(shadowColor)
+        ctx.setLineWidth(0.5)
+        ctx.addPath(thumbPath.cgPath)
+        ctx.strokePath()
+        
+        // Set color for highlighted thumb picker (move somewhere else)??
+        if isHighlighted {
+            ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
+            ctx.addPath(thumbPath.cgPath)
+            ctx.fillPath()
+        }
+    }
 }
 
 class CustomControlTrackLayer: CALayer {
     weak var customControl: CustomControl?
     
     override func draw(in ctx: CGContext) {
-        guard let slider = customControl else {
-            return
-        }
+        guard let slider = customControl else { return }
         
         // Clip
         let cornerRadius = bounds.height * slider.roundedness / 2.0
