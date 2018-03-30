@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         let multiSlider = MultiSlider(frame: frame)
         multiSlider.translatesAutoresizingMaskIntoConstraints = false //true?
         
-        multiSlider.stepDistance = multiSlider.frame.width / 10.0
+        multiSlider.stepDistance = multiSlider.frame.width / 8.0
         multiSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(multiSlider)

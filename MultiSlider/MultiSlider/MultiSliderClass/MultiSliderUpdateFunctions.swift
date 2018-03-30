@@ -64,6 +64,43 @@ extension MultiSlider {
 
 extension MultiSlider {
     
+    private func labelAt(_ index: Int) -> String? {
+        return labels.item(at: index)?.label
+    }
+    
+    // This is probably not the best approach. Generally, the
+    // label names should match the values for api calls
+    //TODO: find an approach that moves this func into an
+    // external class that conforms to a protocol LabelProvidable
+    // or something like that (a func that returns an optional
+    // string named labelForStep(at:)
+    // This functionality should almost certainly be external to
+    // the slider
+    private func labelForStep(at value: Double) -> String? {
+        
+        guard let stepDistance = stepDistance else { return "" }
+        
+        let numberOfSteps = round(maxValue / Double(stepDistance))
+        
+        // Making stepDistance or some other value that converts
+        // CGFloat values like 65.0 to Double 0.125 would allow for below
+        
+        //TODO: change stepDistance into numberOfSteps
+        let distanceInDoubleFormat = 1.0 / numberOfSteps
+        
+        
+        switch value {
+        case 0.0 ..< 1.0 * distanceInDoubleFormat:
+            return labelAt(0)
+            
+        case 1.0 * distanceInDoubleFormat ..< 2.0 * distanceInDoubleFormat:
+            return labelAt(1)
+            
+        default:
+            return nil
+        }
+    }
+        
     private func updateLabelValues() {
         let numberFormatter = NumberFormatter() //TODO: move to extension
         numberFormatter.numberStyle = NumberFormatter.Style.decimal//TODO: needed?
@@ -78,7 +115,12 @@ extension MultiSlider {
             NSAttributedStringKey.foregroundColor: UIColor.black.cgColor
         ]
         
-        minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)
+        if let label = labelForStep(at: lowerValue) {
+            minLabel.string = NSAttributedString(string: label, attributes: attributes)
+        } else {
+            minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)
+        }
+        
         maxLabel.string = NSAttributedString(string: rawMaxString, attributes: attributes)
         
         setNeedsLayout()
