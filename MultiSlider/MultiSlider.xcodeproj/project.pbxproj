@@ -10,7 +10,13 @@
 		03FA5B92206DD39F00F99C01 /* MultiSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FA5B88206DD39F00F99C01 /* MultiSlider.framework */; };
 		03FA5B97206DD39F00F99C01 /* MultiSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5B96206DD39F00F99C01 /* MultiSliderTests.swift */; };
 		03FA5B99206DD39F00F99C01 /* MultiSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FA5B8B206DD39F00F99C01 /* MultiSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03FA5BCE206DD6D100F99C01 /* MultiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BCD206DD6D100F99C01 /* MultiSlider.swift */; };
+		03FA5BCE206DD6D100F99C01 /* MultiSliderMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BCD206DD6D100F99C01 /* MultiSliderMain.swift */; };
+		03FA5BD1206DDFE100F99C01 /* MultiSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BD0206DDFE100F99C01 /* MultiSliderThumbLayer.swift */; };
+		03FA5BD3206DE06B00F99C01 /* MultiSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BD2206DE06B00F99C01 /* MultiSliderTrackLayer.swift */; };
+		03FA5BD5206DE0AD00F99C01 /* MultiSliderTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BD4206DE0AD00F99C01 /* MultiSliderTextLayer.swift */; };
+		03FA5BD7206DE0E100F99C01 /* MultiSliderLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BD6206DE0E100F99C01 /* MultiSliderLayerProtocol.swift */; };
+		03FA5BDA206DE20300F99C01 /* MultiSliderTouchTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BD9206DE20300F99C01 /* MultiSliderTouchTracking.swift */; };
+		03FA5BDC206DE27000F99C01 /* MultiSliderUpdateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA5BDB206DE27000F99C01 /* MultiSliderUpdateFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +36,13 @@
 		03FA5B91206DD39F00F99C01 /* MultiSliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiSliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FA5B96206DD39F00F99C01 /* MultiSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderTests.swift; sourceTree = "<group>"; };
 		03FA5B98206DD39F00F99C01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03FA5BCD206DD6D100F99C01 /* MultiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSlider.swift; sourceTree = "<group>"; };
+		03FA5BCD206DD6D100F99C01 /* MultiSliderMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderMain.swift; sourceTree = "<group>"; };
+		03FA5BD0206DDFE100F99C01 /* MultiSliderThumbLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderThumbLayer.swift; sourceTree = "<group>"; };
+		03FA5BD2206DE06B00F99C01 /* MultiSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderTrackLayer.swift; sourceTree = "<group>"; };
+		03FA5BD4206DE0AD00F99C01 /* MultiSliderTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderTextLayer.swift; sourceTree = "<group>"; };
+		03FA5BD6206DE0E100F99C01 /* MultiSliderLayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderLayerProtocol.swift; sourceTree = "<group>"; };
+		03FA5BD9206DE20300F99C01 /* MultiSliderTouchTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderTouchTracking.swift; sourceTree = "<group>"; };
+		03FA5BDB206DE27000F99C01 /* MultiSliderUpdateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSliderUpdateFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +85,9 @@
 		03FA5B8A206DD39F00F99C01 /* MultiSlider */ = {
 			isa = PBXGroup;
 			children = (
-				03FA5B8B206DD39F00F99C01 /* MultiSlider.h */,
 				03FA5B8C206DD39F00F99C01 /* Info.plist */,
-				03FA5BCD206DD6D100F99C01 /* MultiSlider.swift */,
+				03FA5BD8206DE11100F99C01 /* MultiSliderClass */,
+				03FA5BCF206DDFCC00F99C01 /* CALayers */,
 			);
 			path = MultiSlider;
 			sourceTree = "<group>";
@@ -87,6 +99,28 @@
 				03FA5B98206DD39F00F99C01 /* Info.plist */,
 			);
 			path = MultiSliderTests;
+			sourceTree = "<group>";
+		};
+		03FA5BCF206DDFCC00F99C01 /* CALayers */ = {
+			isa = PBXGroup;
+			children = (
+				03FA5BD6206DE0E100F99C01 /* MultiSliderLayerProtocol.swift */,
+				03FA5BD0206DDFE100F99C01 /* MultiSliderThumbLayer.swift */,
+				03FA5BD2206DE06B00F99C01 /* MultiSliderTrackLayer.swift */,
+				03FA5BD4206DE0AD00F99C01 /* MultiSliderTextLayer.swift */,
+			);
+			path = CALayers;
+			sourceTree = "<group>";
+		};
+		03FA5BD8206DE11100F99C01 /* MultiSliderClass */ = {
+			isa = PBXGroup;
+			children = (
+				03FA5B8B206DD39F00F99C01 /* MultiSlider.h */,
+				03FA5BCD206DD6D100F99C01 /* MultiSliderMain.swift */,
+				03FA5BD9206DE20300F99C01 /* MultiSliderTouchTracking.swift */,
+				03FA5BDB206DE27000F99C01 /* MultiSliderUpdateFunctions.swift */,
+			);
+			path = MultiSliderClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +234,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FA5BCE206DD6D100F99C01 /* MultiSlider.swift in Sources */,
+				03FA5BCE206DD6D100F99C01 /* MultiSliderMain.swift in Sources */,
+				03FA5BD5206DE0AD00F99C01 /* MultiSliderTextLayer.swift in Sources */,
+				03FA5BD1206DDFE100F99C01 /* MultiSliderThumbLayer.swift in Sources */,
+				03FA5BDC206DE27000F99C01 /* MultiSliderUpdateFunctions.swift in Sources */,
+				03FA5BD3206DE06B00F99C01 /* MultiSliderTrackLayer.swift in Sources */,
+				03FA5BD7206DE0E100F99C01 /* MultiSliderLayerProtocol.swift in Sources */,
+				03FA5BDA206DE20300F99C01 /* MultiSliderTouchTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
