@@ -26,9 +26,6 @@ extension MultiSlider {
         CATransaction.begin()
         CATransaction.setDisableActions(true) // Prevents interaction while updating
         
-        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
-        trackLayer.setNeedsDisplay()
-        
         //TODO: simplify below into helper methods / closures
         // Update lower values
         let lowerThumbCenter = CGFloat(positionForValue(value: lowerValue))
@@ -53,14 +50,14 @@ extension MultiSlider {
         upperThumbLayer.frame = CGRect(x: upperX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
+        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
+        trackLayer.setNeedsDisplay()
+        
         updateLabelPositions()
         updateLabelValues()
         minLabel.alignmentMode = kCAAlignmentCenter
-//        minLabel.display()
-//        minLabel.setNeedsDisplay()
         maxLabel.alignmentMode = kCAAlignmentCenter
-//        maxLabel.display()
-//        maxLabel.setNeedsDisplay()
+
         CATransaction.commit()
     }
     
@@ -115,14 +112,14 @@ extension MultiSlider {
         minLabel.frame.size = labelSize
         maxLabel.frame.size = labelSize
         
-        let minimumSpaceBetweenLabels: CGFloat = 2.0
-        let spaceBetweenThumbAndLabel: CGFloat = 16.0
+        let minimumSpaceBetweenLabels: CGFloat = 0.0
+        let spaceBetweenThumbAndLabel: CGFloat = 12.0
         
         let newMinY = lowerThumbLayer.frame.midY - (minLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
-        let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX - layerInset, y: newMinY)
+        let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX, y: newMinY)
         
         let newMaxY = upperThumbLayer.frame.midY - (maxLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
-        let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX - layerInset, y: newMaxY)
+        let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX, y: newMaxY)
         
         let newRightmostXInMinLabel = newMinLabelCenter.x + minLabel.frame.width / 2.0
         let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.width / 2.0
@@ -133,12 +130,13 @@ extension MultiSlider {
             maxLabel.position = newMaxLabelCenter
             
             if minLabel.frame.minX < 0.0 {
-                minLabel.frame.origin.x = 0.0
+                minLabel.frame.origin.x = minLabel.frame.minX + 4.0
             }
             
             if maxLabel.frame.maxX > frame.width {
-                maxLabel.frame.origin.x = frame.width - maxLabel.frame.width
+                maxLabel.frame.origin.x = frame.width - maxLabel.frame.width - 4.0
             }
+            
         } else {
             let increaseAmount: CGFloat = minimumSpaceBetweenLabels - newSpaceBetweenLabels
             minLabel.position = CGPoint(x: newMinLabelCenter.x - increaseAmount / 2.0, y: newMinLabelCenter.y)

@@ -29,13 +29,13 @@ class ViewController: UIViewController {
         let frame = CGRect(x: backgroundView.bounds.minX,
                            y: backgroundView.bounds.midY - (height / 2.0),
                            //TODO: track down why the width is incorrect
-                           width: backgroundView.bounds.width - 40.0,
+                           width: backgroundView.bounds.width,
                            height: height)
         
         let multiSlider = MultiSlider(frame: frame)
         multiSlider.translatesAutoresizingMaskIntoConstraints = false //true?
-        multiSlider.labelDelegate = self
-        multiSlider.numberOfSteps = 8
+//        multiSlider.labelDelegate = self
+//        multiSlider.numberOfSteps = 8
         multiSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(multiSlider)

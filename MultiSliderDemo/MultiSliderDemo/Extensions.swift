@@ -8,6 +8,6 @@
 
 extension Array {
     func item(at index: Int) -> Array.Element? {
-        return index < self.count ? self[index] : nil
+        return (index < self.count && index >= 0) ? self[index] : nil
     }
 }
