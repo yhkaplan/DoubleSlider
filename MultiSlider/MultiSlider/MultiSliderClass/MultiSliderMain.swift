@@ -88,18 +88,7 @@ open class MultiSlider: UIControl {
         }
     }
     
-    // If labels exist, then they should be provided
-    //TODO: find an approach that moves this array into an
-    // external class that conforms to a protocol LabelProvidable
-    // or something like that (a func that returns an optional
-    // string named labelForStep(at:)
-    // This functionality should almost certainly be external to
-    // the slider
-    public let labels: [(label: String, value: Int)] = [
-        ("$0", 0),
-        ("$15", 15),
-        ("No limit", -1)
-    ]
+    public weak var labelDelegate: LabelDelegate?
     
     // Render components
     public let trackLayer = MultiSliderTrackLayer()

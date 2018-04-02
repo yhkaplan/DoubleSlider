@@ -74,41 +74,6 @@ extension MultiSlider {
 // MARK: Label related funcs
 
 extension MultiSlider {
-    
-    private func labelAt(_ index: Int) -> String? {
-        return labels.item(at: index)?.label
-    }
-    
-    // This is probably not the best approach. Generally, the
-    // label names should match the values for api calls
-    //TODO: find an approach that moves this func into an
-    // external class that conforms to a protocol LabelProvidable
-    // or something like that (a func that returns an optional
-    // string named labelForStep(at:)
-    // This functionality should almost certainly be external to
-    // the slider
-    // MAKe the protocol something like LabelDelegate
-    private func labelForStep(at value: Double) -> String? {
-        // TODO: make value an int, step 0, step 1, etc. 
-        
-        guard let _ = numberOfSteps else { return nil }
-        
-        //let numberOfSteps = round(maxValue / Double(stepDistance))
-        
-        // Making stepDistance or some other value that converts
-        // CGFloat values like 65.0 to Double 0.125 would allow for below
-        
-        switch value {
-        case 0.0 ..< 1.0 * stepDistanceDouble:
-            return labelAt(0)
-            
-        case 1.0 * stepDistanceDouble ..< 2.0 * stepDistanceDouble:
-            return labelAt(1)
-            
-        default:
-            return nil
-        }
-    }
         
     private func updateLabelValues() {
         let numberFormatter = NumberFormatter() //TODO: move to extension
@@ -124,7 +89,9 @@ extension MultiSlider {
             NSAttributedStringKey.foregroundColor: UIColor.black.cgColor
         ]
         
-//        if let label = labelForStep(at: lowerValue) {
+//        let stepNumber = (lowerValue - minValue) *   numberOfSteps ?? 0
+//
+//        if let label = labelDelegate?.labelForStep(at: ) {
 //            minLabel.string = NSAttributedString(string: label, attributes: attributes)
 //        } else {
             minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)

@@ -13,6 +13,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     
+    public let labels: [(label: String, value: Int)] = [
+        ("$0", 0),
+        ("$15", 15),
+        ("No limit", -1)
+    ]
+    
     override func viewDidLoad() {
         let height: CGFloat = 32.0 //TODO: make this the default height
         let frame = CGRect(x: backgroundView.bounds.minX,
@@ -23,8 +29,8 @@ class ViewController: UIViewController {
         
         let multiSlider = MultiSlider(frame: frame)
         multiSlider.translatesAutoresizingMaskIntoConstraints = false //true?
-        
-        multiSlider.numberOfSteps = 4
+        multiSlider.labelDelegate = self
+//        multiSlider.numberOfSteps = 4
         multiSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(multiSlider)
@@ -35,3 +41,8 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: LabelDelegate {
+    func labelForStep(at index: Int) -> String? {
+        return labels.item(at: index)?.label
+    }
+}
