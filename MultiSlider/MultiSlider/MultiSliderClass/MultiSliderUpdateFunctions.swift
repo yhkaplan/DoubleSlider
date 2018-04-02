@@ -76,38 +76,46 @@ extension MultiSlider {
 extension MultiSlider {
         
     private func updateLabelValues() {
-        let numberFormatter = NumberFormatter() //TODO: move to extension
-        numberFormatter.numberStyle = NumberFormatter.Style.decimal//TODO: needed?
-
-        guard let rawMinString = numberFormatter.string(from: lowerValue as NSNumber),
-            let rawMaxString = numberFormatter.string(from: upperValue as NSNumber) else {
-                return
-        }
-
+        
+        let rawMinString = "\(lowerValue.roundedToTwoPlaces)"
+        let rawMaxString = "\(upperValue.roundedToTwoPlaces)"
+        
         let attributes: [NSAttributedStringKey: Any] = [
             NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12.0),
             NSAttributedStringKey.foregroundColor: UIColor.black.cgColor
         ]
         
-//        let stepNumber = (lowerValue - minValue) *   numberOfSteps ?? 0
-//
-//        if let label = labelDelegate?.labelForStep(at: ) {
-//            minLabel.string = NSAttributedString(string: label, attributes: attributes)
-//        } else {
+        if let currentStep = currentStep(for: lowerValue),
+            let label = labelDelegate?.labelForStep(at: currentStep) {
+            minLabel.string = NSAttributedString(string: label, attributes: attributes)
+        
+        } else {
             minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)
-//        }
+        }
         
-        maxLabel.string = NSAttributedString(string: rawMaxString, attributes: attributes)
         
+        if let currentStep = currentStep(for: upperValue),
+            let label = labelDelegate?.labelForStep(at: currentStep) {
+            maxLabel.string = NSAttributedString(string: label, attributes: attributes)
+            
+        } else {
+            maxLabel.string = NSAttributedString(string: rawMaxString, attributes: attributes)
+        }
         setNeedsLayout()
     }
     
+    private func currentStep(for value: Double) -> Int? {
+        guard let numberOfSteps = numberOfSteps else { return nil }
+        
+        return Int(round((value - minValue) * Double(numberOfSteps - 1)))
+    }
+    
     private func updateLabelPositions() {
-        let labelSize = CGSize(width: 40, height: 20)
+        let labelSize = CGSize(width: 45, height: 20)
         minLabel.frame.size = labelSize
         maxLabel.frame.size = labelSize
         
-        let minimumSpaceBetweenLabels: CGFloat = 8.0
+        let minimumSpaceBetweenLabels: CGFloat = 20.0
         let spaceBetweenThumbAndLabel: CGFloat = 20.0
         
         let newMinY = lowerThumbLayer.frame.midY - (minLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel

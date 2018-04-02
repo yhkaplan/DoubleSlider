@@ -16,11 +16,16 @@ class ViewController: UIViewController {
     public let labels: [(label: String, value: Int)] = [
         ("$0", 0),
         ("$15", 15),
+        ("$25", 25),
+        ("$50", 50),
+        ("$75", 75),
+        ("$100", 100),
+        ("$150", 150),
         ("No limit", -1)
     ]
     
     override func viewDidLoad() {
-        let height: CGFloat = 32.0 //TODO: make this the default height
+        let height: CGFloat = 34.0 //TODO: make this the default height
         let frame = CGRect(x: backgroundView.bounds.minX,
                            y: backgroundView.bounds.midY - (height / 2.0),
                            //TODO: track down why the width is incorrect
@@ -30,7 +35,7 @@ class ViewController: UIViewController {
         let multiSlider = MultiSlider(frame: frame)
         multiSlider.translatesAutoresizingMaskIntoConstraints = false //true?
         multiSlider.labelDelegate = self
-//        multiSlider.numberOfSteps = 4
+        multiSlider.numberOfSteps = 8
         multiSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(multiSlider)
