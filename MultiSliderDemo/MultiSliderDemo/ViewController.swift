@@ -14,14 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     
     public let labels: [(label: String, value: Int)] = [
-        ("$0", 0),
-        ("$15", 15),
-        ("$25", 25),
-        ("$50", 50),
-        ("$75", 75),
-        ("$100", 100),
-        ("$150", 150),
-        ("No limit", -1)
+        ("0円", 0),
+        ("1,000円", 15),
+        ("2,500円", 25),
+        ("5,000円", 50),
+        ("10,000円", 75),
+        ("25,000円", 100),
+        ("50,000円", 150),
+        ("上限なし", -1)
     ]
     
     override func viewDidLoad() {

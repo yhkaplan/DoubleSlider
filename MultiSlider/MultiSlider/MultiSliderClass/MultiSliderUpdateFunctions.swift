@@ -111,18 +111,18 @@ extension MultiSlider {
     }
     
     private func updateLabelPositions() {
-        let labelSize = CGSize(width: 45, height: 20)
+        let labelSize = CGSize(width: 55, height: 20)
         minLabel.frame.size = labelSize
         maxLabel.frame.size = labelSize
         
-        let minimumSpaceBetweenLabels: CGFloat = 20.0
-        let spaceBetweenThumbAndLabel: CGFloat = 20.0
+        let minimumSpaceBetweenLabels: CGFloat = 2.0
+        let spaceBetweenThumbAndLabel: CGFloat = 16.0
         
         let newMinY = lowerThumbLayer.frame.midY - (minLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
-        let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX, y: newMinY)
+        let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX - layerInset, y: newMinY)
         
         let newMaxY = upperThumbLayer.frame.midY - (maxLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
-        let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX, y: newMaxY)
+        let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX - layerInset, y: newMaxY)
         
         let newRightmostXInMinLabel = newMinLabelCenter.x + minLabel.frame.width / 2.0
         let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.width / 2.0
@@ -139,6 +139,26 @@ extension MultiSlider {
             if maxLabel.frame.maxX > frame.width {
                 maxLabel.frame.origin.x = frame.width - maxLabel.frame.width
             }
-        } else {} //TODO: see585
+        } else {
+            let increaseAmount: CGFloat = minimumSpaceBetweenLabels - newSpaceBetweenLabels
+            minLabel.position = CGPoint(x: newMinLabelCenter.x - increaseAmount / 2.0, y: newMinLabelCenter.y)
+            maxLabel.position = CGPoint(x: newMaxLabelCenter.x + increaseAmount / 2.0, y: newMaxLabelCenter.y)
+            
+            // Update x if still in the original position
+            if minLabel.position.x == maxLabel.position.x {
+                minLabel.position.x = lowerThumbLayer.frame.midX
+                maxLabel.position.x = lowerThumbLayer.frame.midX + minLabel.frame.width / 2.0 + minimumSpaceBetweenLabels + maxLabel.frame.width / 2.0
+            }
+            
+            if minLabel.frame.minX < 0.0 {
+                minLabel.frame.origin.x = 0.0
+                maxLabel.frame.origin.x = minimumSpaceBetweenLabels + minLabel.frame.width
+            }
+            
+            if maxLabel.frame.maxX > frame.width {
+                maxLabel.frame.origin.x = frame.width - maxLabel.frame.width
+                minLabel.frame.origin.x = maxLabel.frame.origin.x - minimumSpaceBetweenLabels - minimumSpaceBetweenLabels - minLabel.frame.width
+            }
+        }
     }
 }
