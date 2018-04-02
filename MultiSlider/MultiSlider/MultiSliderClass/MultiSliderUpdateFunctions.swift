@@ -26,7 +26,7 @@ extension MultiSlider {
         CATransaction.begin()
         CATransaction.setDisableActions(true) // Prevents interaction while updating
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 2.15) //TODO: may be incorrect
+        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
         trackLayer.setNeedsDisplay()
         
         //TODO: simplify below into helper methods / closures

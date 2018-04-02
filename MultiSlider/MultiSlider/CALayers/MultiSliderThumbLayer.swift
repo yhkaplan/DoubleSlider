@@ -27,8 +27,8 @@ public class MultiSliderThumbLayer: CALayer, MultiSliderLayer {
     override public func draw(in ctx: CGContext) {
         guard let slider = multiSlider else { return }
         
-        let insetSize: CGFloat = 2.0
-        let thumbFrame = bounds.insetBy(dx: insetSize, dy: insetSize)
+        let inset = slider.layerInset
+        let thumbFrame = bounds.insetBy(dx: inset, dy: inset)
         let cornerRadius = thumbFrame.height * slider.roundedness / 2.0
         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
         

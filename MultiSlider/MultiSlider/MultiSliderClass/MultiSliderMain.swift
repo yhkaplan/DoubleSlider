@@ -52,6 +52,17 @@ open class MultiSlider: UIControl {
         }
     }
     
+    // This inset is shared between the thumb layers and
+    // the track layer so the track layer doesn't extend
+    // beyond the thumbs. Also, this value makes sure
+    // that the shadows found on the thumb layer aren't
+    // cut off.
+    public var layerInset: CGFloat = 3.0 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
     // Override this to show only one label, etc.
     open var labelsAreHidden: Bool = false {
         didSet {
