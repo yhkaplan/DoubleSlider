@@ -46,8 +46,11 @@ open class MultiSlider: UIControl {
         }
     }
     
-    // When stepDistance is set to nil, then steps are deactivated
-    public var stepDistance: CGFloat? = nil //TODO: determine if property observer is needed
+    public var numberOfSteps: Int? = nil {
+        didSet {
+            updateLayerFrames()
+        }
+    }
     
     // Override this to show only one label, etc.
     open var labelsAreHidden: Bool = false {

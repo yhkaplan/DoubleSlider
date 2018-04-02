@@ -12,6 +12,16 @@ import UIKit
 
 extension MultiSlider {
     
+    // When stepDistance is set to nil, then steps are deactivated
+    private var stepDistanceDouble: Double { //TODO: determine if property observer is needed
+        guard let numberOfSteps = numberOfSteps else { return 0 }
+        return maxValue / Double(numberOfSteps)
+    }
+    
+    private var stepDistanceCGFloat: CGFloat { //TODO: check
+        return bounds.width * CGFloat(stepDistanceDouble)
+    }
+    
     open func updateLayerFrames() {
         CATransaction.begin()
         CATransaction.setDisableActions(true) // Prevents interaction while updating
@@ -24,8 +34,9 @@ extension MultiSlider {
         let lowerThumbCenter = CGFloat(positionForValue(value: lowerValue))
         var lowerX = lowerThumbCenter - thumbWidth / 2.0
         
-        if let stepDistance = stepDistance, stepDistance > 0.0 { //TODO: make this extension or helper method
-            lowerX = CGFloat(roundf(Float(lowerX / stepDistance))) * stepDistance
+        if let numberOfSteps = numberOfSteps, numberOfSteps > 0 { //TODO: make this extension or helper method
+            
+            lowerX = CGFloat(roundf(Float(lowerX / stepDistanceCGFloat))) * stepDistanceCGFloat
         }
         
         lowerThumbLayer.frame = CGRect(x: lowerX, y: 0.0, width: thumbWidth, height: thumbWidth)
@@ -35,8 +46,8 @@ extension MultiSlider {
         let upperThumbCenter = CGFloat(positionForValue(value: upperValue))
         var upperX = upperThumbCenter - thumbWidth / 2.0
         
-        if let stepDistance = stepDistance, stepDistance > 0.0 {
-            upperX = CGFloat(roundf(Float(upperX / stepDistance))) * stepDistance
+        if let numberOfSteps = numberOfSteps, numberOfSteps > 0 {
+            upperX = CGFloat(roundf(Float(upperX / stepDistanceCGFloat))) * stepDistanceCGFloat
         }
         
         upperThumbLayer.frame = CGRect(x: upperX, y: 0.0, width: thumbWidth, height: thumbWidth)
@@ -76,24 +87,22 @@ extension MultiSlider {
     // string named labelForStep(at:)
     // This functionality should almost certainly be external to
     // the slider
+    // MAKe the protocol something like LabelDelegate
     private func labelForStep(at value: Double) -> String? {
+        // TODO: make value an int, step 0, step 1, etc. 
         
-        guard let stepDistance = stepDistance else { return "" }
+        guard let _ = numberOfSteps else { return nil }
         
-        let numberOfSteps = round(maxValue / Double(stepDistance))
+        //let numberOfSteps = round(maxValue / Double(stepDistance))
         
         // Making stepDistance or some other value that converts
         // CGFloat values like 65.0 to Double 0.125 would allow for below
         
-        //TODO: change stepDistance into numberOfSteps
-        let distanceInDoubleFormat = 1.0 / numberOfSteps
-        
-        
         switch value {
-        case 0.0 ..< 1.0 * distanceInDoubleFormat:
+        case 0.0 ..< 1.0 * stepDistanceDouble:
             return labelAt(0)
             
-        case 1.0 * distanceInDoubleFormat ..< 2.0 * distanceInDoubleFormat:
+        case 1.0 * stepDistanceDouble ..< 2.0 * stepDistanceDouble:
             return labelAt(1)
             
         default:
@@ -115,11 +124,11 @@ extension MultiSlider {
             NSAttributedStringKey.foregroundColor: UIColor.black.cgColor
         ]
         
-        if let label = labelForStep(at: lowerValue) {
-            minLabel.string = NSAttributedString(string: label, attributes: attributes)
-        } else {
+//        if let label = labelForStep(at: lowerValue) {
+//            minLabel.string = NSAttributedString(string: label, attributes: attributes)
+//        } else {
             minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)
-        }
+//        }
         
         maxLabel.string = NSAttributedString(string: rawMaxString, attributes: attributes)
         
