@@ -1,4 +1,4 @@
 
-public protocol LabelDelegate: class {
+public protocol DoubleSliderLabelDelegate: class {
     func labelForStep(at index: Int) -> String?
 }

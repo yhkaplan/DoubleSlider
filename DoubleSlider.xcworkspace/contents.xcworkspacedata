@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:DoubleSliderDemo/DoubleSliderDemo.xcodeproj">
+      location = "group:DoubleSlider/DoubleSlider.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DoubleSlider/DoubleSlider.xcodeproj">
+      location = "container:DoubleSliderDemo/DoubleSliderDemo.xcodeproj">
    </FileRef>
 </Workspace>

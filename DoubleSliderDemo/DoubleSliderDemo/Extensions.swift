@@ -7,7 +7,7 @@
 //
 
 extension Array {
-    func item(at index: Int) -> Array.Element? {
+    func item(at index: Int) -> Element? {
         return (index < self.count && index >= 0) ? self[index] : nil
     }
 }

@@ -99,7 +99,7 @@ open class DoubleSlider: UIControl {
         }
     }
     
-    public weak var labelDelegate: LabelDelegate?
+    public weak var labelDelegate: DoubleSliderLabelDelegate?
     
     // Render components
     public let trackLayer = DoubleSliderTrackLayer()
