@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		03763D3C20724273000AFB80 /* DoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 03763D3A20724273000AFB80 /* DoubleSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03763D5820724317000AFB80 /* MultiSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */; };
-		03763D5920724317000AFB80 /* MultiSliderTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5520724317000AFB80 /* MultiSliderTextLayer.swift */; };
 		03763D5A20724317000AFB80 /* MultiSliderLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */; };
 		03763D5B20724317000AFB80 /* MultiSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */; };
 		03763D6020724326000AFB80 /* DoubleSliderUpdateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */; };
@@ -24,7 +23,6 @@
 		03763D3A20724273000AFB80 /* DoubleSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleSlider.h; sourceTree = "<group>"; };
 		03763D3B20724273000AFB80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderThumbLayer.swift; sourceTree = "<group>"; };
-		03763D5520724317000AFB80 /* MultiSliderTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderTextLayer.swift; sourceTree = "<group>"; };
 		03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderLayerProtocol.swift; sourceTree = "<group>"; };
 		03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderTrackLayer.swift; sourceTree = "<group>"; };
 		03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderUpdateFunctions.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */,
-				03763D5520724317000AFB80 /* MultiSliderTextLayer.swift */,
 				03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */,
 				03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */,
 			);
@@ -191,7 +188,6 @@
 				03763D5B20724317000AFB80 /* MultiSliderTrackLayer.swift in Sources */,
 				03763D6120724326000AFB80 /* DoubleSliderMain.swift in Sources */,
 				03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */,
-				03763D5920724317000AFB80 /* MultiSliderTextLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

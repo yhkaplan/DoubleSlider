@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03125727207244E600AA8ACB /* DoubleSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03125726207244E600AA8ACB /* DoubleSlider.framework */; };
-		03125728207244E600AA8ACB /* DoubleSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03125726207244E600AA8ACB /* DoubleSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		036F406020760DF9002AC7C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036F405F20760DF8002AC7C0 /* ViewController.swift */; };
 		03763D762072443D000AFB80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D752072443D000AFB80 /* AppDelegate.swift */; };
 		03763D7D2072443D000AFB80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03763D7C2072443D000AFB80 /* Assets.xcassets */; };
 		03763D802072443D000AFB80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03763D7E2072443D000AFB80 /* LaunchScreen.storyboard */; };
 		03763D8820724463000AFB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D8720724463000AFB80 /* Extensions.swift */; };
-		03763D8A2072446F000AFB80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D892072446F000AFB80 /* ViewController.swift */; };
 		03763D8C2072448A000AFB80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03763D8B2072448A000AFB80 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03125728207244E600AA8ACB /* DoubleSlider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,14 +29,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03125726207244E600AA8ACB /* DoubleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DoubleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		036F405F20760DF8002AC7C0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03763D722072443D000AFB80 /* DoubleSliderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleSliderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03763D752072443D000AFB80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03763D7C2072443D000AFB80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03763D7F2072443D000AFB80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03763D812072443D000AFB80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03763D8720724463000AFB80 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		03763D892072446F000AFB80 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../../Desktop/MultiSliderDemo/MultiSliderDemo/ViewController.swift; sourceTree = "<group>"; };
 		03763D8B2072448A000AFB80 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03125727207244E600AA8ACB /* DoubleSlider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +53,6 @@
 		03763D692072443D000AFB80 = {
 			isa = PBXGroup;
 			children = (
-				03125726207244E600AA8ACB /* DoubleSlider.framework */,
 				03763D742072443D000AFB80 /* DoubleSliderDemo */,
 				03763D732072443D000AFB80 /* Products */,
 			);
@@ -77,7 +71,7 @@
 			children = (
 				03763D8720724463000AFB80 /* Extensions.swift */,
 				03763D752072443D000AFB80 /* AppDelegate.swift */,
-				03763D892072446F000AFB80 /* ViewController.swift */,
+				036F405F20760DF8002AC7C0 /* ViewController.swift */,
 				03763D8B2072448A000AFB80 /* Main.storyboard */,
 				03763D7C2072443D000AFB80 /* Assets.xcassets */,
 				03763D7E2072443D000AFB80 /* LaunchScreen.storyboard */,
@@ -159,8 +153,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036F406020760DF9002AC7C0 /* ViewController.swift in Sources */,
 				03763D8820724463000AFB80 /* Extensions.swift in Sources */,
-				03763D8A2072446F000AFB80 /* ViewController.swift in Sources */,
 				03763D762072443D000AFB80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

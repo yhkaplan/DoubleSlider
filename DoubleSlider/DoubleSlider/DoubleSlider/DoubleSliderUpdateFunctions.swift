@@ -78,8 +78,8 @@ extension DoubleSlider {
         let rawMaxString = "\(upperValue.roundedToTwoPlaces)"
         
         let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12.0),
-            NSAttributedStringKey.foregroundColor: UIColor.black.cgColor
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
+            NSAttributedStringKey.foregroundColor: Colors.textGray
         ]
         
         if let currentStep = currentStep(for: lowerValue),
@@ -113,7 +113,7 @@ extension DoubleSlider {
         maxLabel.frame.size = labelSize
         
         let minimumSpaceBetweenLabels: CGFloat = 0.0
-        let spaceBetweenThumbAndLabel: CGFloat = 12.0
+        let spaceBetweenThumbAndLabel: CGFloat = 18.0
         
         let newMinY = lowerThumbLayer.frame.midY - (minLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
         let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX, y: newMinY)
