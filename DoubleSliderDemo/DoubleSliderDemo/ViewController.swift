@@ -26,10 +26,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         let height: CGFloat = 34.0 //TODO: make this the default height
+        let width = backgroundView.bounds.width
         let frame = CGRect(x: backgroundView.bounds.minX,
                            y: backgroundView.bounds.midY - (height / 2.0),
                            //TODO: track down why the width is incorrect
-                           width: backgroundView.bounds.width,
+                           width: width,
                            height: height)
         
         let doubleSlider = DoubleSlider(frame: frame)

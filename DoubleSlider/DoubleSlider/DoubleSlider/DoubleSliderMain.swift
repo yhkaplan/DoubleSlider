@@ -139,12 +139,14 @@ open class DoubleSlider: UIControl {
         updateLayerFrames()
     }
     
-    // This _must_ be a generic in order to use both CALayer and MSLayer
-    // methods/parameters
     private func setupLayer(_ msLayer: CALayer) {
+        
+        // Set the doubleSlider var for CALayers that
+        // conform to DoubleSliderLayer
         if let msLayer = msLayer as? DoubleSliderLayer {
             msLayer.doubleSlider = self
         }
+        
         msLayer.contentsScale = UIScreen.main.scale
         layer.addSublayer(msLayer)
     }

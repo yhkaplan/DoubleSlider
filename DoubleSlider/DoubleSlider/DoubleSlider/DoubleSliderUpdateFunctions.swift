@@ -13,13 +13,13 @@ import UIKit
 extension DoubleSlider {
     
     // When stepDistance is set to nil, then steps are deactivated
-    private var stepDistanceDouble: Double { //TODO: determine if property observer is needed
-        guard let numberOfSteps = numberOfSteps else { return 0 }
-        return maxValue / Double(numberOfSteps)
-    }
-    
-    private var stepDistanceCGFloat: CGFloat { //TODO: check
-        return bounds.width * CGFloat(stepDistanceDouble)
+    private var stepDistance: CGFloat { //TODO: check
+        guard let numberOfSteps = numberOfSteps else {
+            return 0.0
+        }
+        
+        let distance = maxValue / Double(numberOfSteps)
+        return bounds.width * CGFloat(distance)
     }
     
     open func updateLayerFrames() {
@@ -33,7 +33,7 @@ extension DoubleSlider {
         
         if let numberOfSteps = numberOfSteps, numberOfSteps > 0 { //TODO: make this extension or helper method
             
-            lowerX = CGFloat(roundf(Float(lowerX / stepDistanceCGFloat))) * stepDistanceCGFloat
+            lowerX = CGFloat(roundf(Float(lowerX / stepDistance))) * stepDistance
         }
         
         lowerThumbLayer.frame = CGRect(x: lowerX, y: 0.0, width: thumbWidth, height: thumbWidth)
@@ -44,7 +44,7 @@ extension DoubleSlider {
         var upperX = upperThumbCenter - thumbWidth / 2.0
         
         if let numberOfSteps = numberOfSteps, numberOfSteps > 0 {
-            upperX = CGFloat(roundf(Float(upperX / stepDistanceCGFloat))) * stepDistanceCGFloat
+            upperX = CGFloat(roundf(Float(upperX / stepDistance))) * stepDistance
         }
         
         upperThumbLayer.frame = CGRect(x: upperX, y: 0.0, width: thumbWidth, height: thumbWidth)

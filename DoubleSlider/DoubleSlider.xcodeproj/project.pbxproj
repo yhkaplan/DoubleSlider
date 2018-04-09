@@ -82,10 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				03763D3A20724273000AFB80 /* DoubleSlider.h */,
+				03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */,
 				03763D5D20724326000AFB80 /* DoubleSliderMain.swift */,
 				03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */,
 				03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */,
-				03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */,
 			);
 			path = DoubleSlider;
 			sourceTree = "<group>";
