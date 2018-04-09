@@ -100,6 +100,10 @@ open class DoubleSlider: UIControl {
         }
     }
     
+    public let minimumSpaceBetweenLabels: CGFloat = 0.0
+    
+    public let spaceBetweenThumbAndLabel: CGFloat = 18.0
+    
     public weak var labelDelegate: DoubleSliderLabelDelegate?
     
     // Render components

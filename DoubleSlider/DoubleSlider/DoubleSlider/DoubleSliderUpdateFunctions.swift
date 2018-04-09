@@ -107,20 +107,19 @@ extension DoubleSlider {
         return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
     
+    private func labelCenter(for label: DoubleSliderThumbLayer) -> CGPoint {
+        let labelY = trackLayer.frame.midY - minLabel.frame.midY - spaceBetweenThumbAndLabel
+        return CGPoint(x: label.frame.midX, y: labelY)
+    }
+    
     // TODO: split into smaller funcs
     private func updateLabelPositions() {
         let labelSize = CGSize(width: 55, height: 20)
         minLabel.frame.size = labelSize
         maxLabel.frame.size = labelSize
         
-        let minimumSpaceBetweenLabels: CGFloat = 0.0
-        let spaceBetweenThumbAndLabel: CGFloat = 18.0
-        
-        let newMinY = lowerThumbLayer.frame.midY - minLabel.frame.midY - spaceBetweenThumbAndLabel
-        let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX, y: newMinY)
-        
-        let newMaxY = upperThumbLayer.frame.midY - maxLabel.frame.midY - spaceBetweenThumbAndLabel
-        let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX, y: newMaxY)
+        let newMinLabelCenter = labelCenter(for: lowerThumbLayer)
+        let newMaxLabelCenter = labelCenter(for: upperThumbLayer)
         
         let newRightmostXInMinLabel = newMinLabelCenter.x + minLabel.frame.midX
         let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.midX

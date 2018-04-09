@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03763D3C20724273000AFB80 /* DoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 03763D3A20724273000AFB80 /* DoubleSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03763D5820724317000AFB80 /* MultiSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */; };
-		03763D5A20724317000AFB80 /* MultiSliderLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */; };
-		03763D5B20724317000AFB80 /* MultiSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */; };
+		03763D5820724317000AFB80 /* DoubleSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5420724317000AFB80 /* DoubleSliderThumbLayer.swift */; };
+		03763D5A20724317000AFB80 /* DoubleSliderLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5620724317000AFB80 /* DoubleSliderLayerProtocol.swift */; };
+		03763D5B20724317000AFB80 /* DoubleSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5720724317000AFB80 /* DoubleSliderTrackLayer.swift */; };
 		03763D6020724326000AFB80 /* DoubleSliderUpdateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */; };
 		03763D6120724326000AFB80 /* DoubleSliderMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5D20724326000AFB80 /* DoubleSliderMain.swift */; };
 		03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */; };
@@ -22,9 +22,9 @@
 		03763D3720724273000AFB80 /* DoubleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoubleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03763D3A20724273000AFB80 /* DoubleSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleSlider.h; sourceTree = "<group>"; };
 		03763D3B20724273000AFB80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderThumbLayer.swift; sourceTree = "<group>"; };
-		03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderLayerProtocol.swift; sourceTree = "<group>"; };
-		03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSliderTrackLayer.swift; sourceTree = "<group>"; };
+		03763D5420724317000AFB80 /* DoubleSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderThumbLayer.swift; sourceTree = "<group>"; };
+		03763D5620724317000AFB80 /* DoubleSliderLayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderLayerProtocol.swift; sourceTree = "<group>"; };
+		03763D5720724317000AFB80 /* DoubleSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderTrackLayer.swift; sourceTree = "<group>"; };
 		03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderUpdateFunctions.swift; sourceTree = "<group>"; };
 		03763D5D20724326000AFB80 /* DoubleSliderMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderMain.swift; sourceTree = "<group>"; };
 		03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderLabelDelegate.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 		03763D68207243D2000AFB80 /* CALayers */ = {
 			isa = PBXGroup;
 			children = (
-				03763D5620724317000AFB80 /* MultiSliderLayerProtocol.swift */,
-				03763D5420724317000AFB80 /* MultiSliderThumbLayer.swift */,
-				03763D5720724317000AFB80 /* MultiSliderTrackLayer.swift */,
+				03763D5620724317000AFB80 /* DoubleSliderLayerProtocol.swift */,
+				03763D5420724317000AFB80 /* DoubleSliderThumbLayer.swift */,
+				03763D5720724317000AFB80 /* DoubleSliderTrackLayer.swift */,
 			);
 			path = CALayers;
 			sourceTree = "<group>";
@@ -180,12 +180,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03763D5820724317000AFB80 /* MultiSliderThumbLayer.swift in Sources */,
+				03763D5820724317000AFB80 /* DoubleSliderThumbLayer.swift in Sources */,
 				03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */,
-				03763D5A20724317000AFB80 /* MultiSliderLayerProtocol.swift in Sources */,
+				03763D5A20724317000AFB80 /* DoubleSliderLayerProtocol.swift in Sources */,
 				03763D6020724326000AFB80 /* DoubleSliderUpdateFunctions.swift in Sources */,
 				03763D6520724331000AFB80 /* DoubleExtensions.swift in Sources */,
-				03763D5B20724317000AFB80 /* MultiSliderTrackLayer.swift in Sources */,
+				03763D5B20724317000AFB80 /* DoubleSliderTrackLayer.swift in Sources */,
 				03763D6120724326000AFB80 /* DoubleSliderMain.swift in Sources */,
 				03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */,
 			);
