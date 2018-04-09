@@ -116,14 +116,14 @@ extension DoubleSlider {
         let minimumSpaceBetweenLabels: CGFloat = 0.0
         let spaceBetweenThumbAndLabel: CGFloat = 18.0
         
-        let newMinY = lowerThumbLayer.frame.midY - (minLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
+        let newMinY = lowerThumbLayer.frame.midY - minLabel.frame.midY - spaceBetweenThumbAndLabel
         let newMinLabelCenter = CGPoint(x: lowerThumbLayer.frame.midX, y: newMinY)
         
-        let newMaxY = upperThumbLayer.frame.midY - (maxLabel.frame.height / 2.0) - spaceBetweenThumbAndLabel
+        let newMaxY = upperThumbLayer.frame.midY - maxLabel.frame.midY - spaceBetweenThumbAndLabel
         let newMaxLabelCenter = CGPoint(x: upperThumbLayer.frame.midX, y: newMaxY)
         
-        let newRightmostXInMinLabel = newMinLabelCenter.x + minLabel.frame.width / 2.0
-        let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.width / 2.0
+        let newRightmostXInMinLabel = newMinLabelCenter.x + minLabel.frame.midX
+        let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.midX
         let newSpaceBetweenLabels = newLeftmostXInMaxLabel - newRightmostXInMinLabel
         
         if newSpaceBetweenLabels > minimumSpaceBetweenLabels {
@@ -146,7 +146,7 @@ extension DoubleSlider {
             // Update x if still in the original position
             if minLabel.position.x == maxLabel.position.x {
                 minLabel.position.x = lowerThumbLayer.frame.midX
-                maxLabel.position.x = lowerThumbLayer.frame.midX + minLabel.frame.width / 2.0 + minimumSpaceBetweenLabels + maxLabel.frame.width / 2.0
+                maxLabel.position.x = lowerThumbLayer.frame.midX + minLabel.frame.midX + minimumSpaceBetweenLabels + maxLabel.frame.midX
             }
             
             if minLabel.frame.minX < 0.0 {
