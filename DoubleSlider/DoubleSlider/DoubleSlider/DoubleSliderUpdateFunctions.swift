@@ -107,6 +107,7 @@ extension DoubleSlider {
         return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
     
+    // TODO: split into smaller funcs
     private func updateLabelPositions() {
         let labelSize = CGSize(width: 55, height: 20)
         minLabel.frame.size = labelSize

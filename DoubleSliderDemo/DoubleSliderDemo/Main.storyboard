@@ -53,7 +53,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="I4Z-3N-Og7" id="78J-Vq-6uN"/>
+                        <outlet property="backgroundView" destination="I4Z-3N-Og7" id="NhM-aT-esM"/>
+                        <outlet property="normalSlider" destination="pms-y0-JKl" id="GhC-jZ-wyG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

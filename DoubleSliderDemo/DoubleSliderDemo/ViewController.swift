@@ -12,6 +12,7 @@ import DoubleSlider
 class ViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var normalSlider: UISlider!
     
     public let labels: [(label: String, value: Int)] = [
         ("$0", 0),
@@ -24,19 +25,18 @@ class ViewController: UIViewController {
         ("No limit", -1)
     ]
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {       
         let height: CGFloat = 34.0 //TODO: make this the default height
-        let width = backgroundView.bounds.width
+        let width = view.bounds.width - 40.0
         let frame = CGRect(x: backgroundView.bounds.minX,
                            y: backgroundView.bounds.midY - (height / 2.0),
-                           //TODO: track down why the width is incorrect
                            width: width,
                            height: height)
         
         let doubleSlider = DoubleSlider(frame: frame)
-        doubleSlider.translatesAutoresizingMaskIntoConstraints = false //true?
-        doubleSlider.labelDelegate = self
-        doubleSlider.numberOfSteps = labels.count
+        doubleSlider.translatesAutoresizingMaskIntoConstraints = false
+//        doubleSlider.labelDelegate = self
+//        doubleSlider.numberOfSteps = labels.count
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(doubleSlider)
