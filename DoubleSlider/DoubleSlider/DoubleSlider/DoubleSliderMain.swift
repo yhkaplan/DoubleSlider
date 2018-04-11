@@ -23,17 +23,9 @@ public enum Colors {
 open class DoubleSlider: UIControl {
     
     // Track values
-    public var minValue: Double = 0.0 { //TODO: make read-only
-        didSet {
-            updateLayerFrames()
-        }
-    }
+    public private(set) var minValue: Double = 0.0
     
-    public var maxValue: Double = 1.0 { //TODO: make read-only
-        didSet {
-            updateLayerFrames()
-        }
-    }
+    public private(set) var maxValue: Double = 1.0
     
     public var lowerValue: Double = 0.2 {
         didSet {
@@ -119,7 +111,7 @@ open class DoubleSlider: UIControl {
         return CGFloat(bounds.height)
     }
     
-    override open var frame: CGRect {
+    override open var frame: CGRect { //TODO: is this needed?
         didSet {
             updateLayerFrames()
         }

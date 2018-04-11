@@ -18,7 +18,7 @@ extension Double {
     var asRoundedAttributedString: NSAttributedString {
         // Prevents negative numbers from appearing in labels
         var value = self.roundedToTwoPlaces
-        if value < 0.0 { // this should equal minValue
+        if value < 0 { // this should equal minValue
             value = 0.00 // this should equal minValue
         }
         
