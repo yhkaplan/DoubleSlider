@@ -34,11 +34,11 @@ extension DoubleSlider {
         
         // Update values
         if lowerThumbLayer.isHighlighted {
-            lowerValue += dragValue
-            lowerValue = boundValue(value: lowerValue, lowerValue: minValue, upperValue: upperValue)
+            let tempValue = lowerValue + dragValue
+            lowerValue = boundValue(value: tempValue, lowerValue: minValue, upperValue: upperValue)
         } else if upperThumbLayer.isHighlighted {
-            upperValue += dragValue
-            upperValue = boundValue(value: upperValue, lowerValue: lowerValue, upperValue: maxValue)
+            let tempValue = upperValue + dragValue
+            upperValue = boundValue(value: tempValue, lowerValue: lowerValue, upperValue: maxValue)
         }
         
         // update values
