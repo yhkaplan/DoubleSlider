@@ -15,15 +15,15 @@ extension Double {
     
     // This is used to provide a formatted version of the label
     // string for the current upper/lower value
-    var asAttributedString: NSAttributedString {
-        return "\(self.roundedToTwoPlaces)".withDefaultAttributes
+    var asRoundedAttributedString: NSAttributedString {
+        return "\(self.roundedToTwoPlaces)".asAttributedString
     }
     
 }
 
 extension String {
     
-    var withDefaultAttributes: NSAttributedString {
+    var asAttributedString: NSAttributedString {
         let attributes: [NSAttributedStringKey: Any] = [
             NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
             NSAttributedStringKey.foregroundColor: Colors.textGray

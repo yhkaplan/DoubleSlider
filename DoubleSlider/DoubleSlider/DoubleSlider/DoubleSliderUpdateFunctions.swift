@@ -71,26 +71,24 @@ extension DoubleSlider {
 // MARK: Label related funcs
 
 extension DoubleSlider {
-        
+    
+    // If a custom label is set for the lower or upper value,
+    // then that label is used instead of the raw value
     private func updateLabelValues() {
-        // If a custom label is set for the lower value,
-        // then that label is used instead of the raw value
         if let currentStep = currentStep(for: lowerValue),
             let label = labelDelegate?.labelForStep(at: currentStep) {
-            minLabel.string = label.withDefaultAttributes
+            minLabel.string = label.asAttributedString
         
         } else {
-            minLabel.string = lowerValue.asAttributedString
+            minLabel.string = lowerValue.asRoundedAttributedString
         }
         
-        // If a custom label is set for the upper value,
-        // then that label is used instead of the raw value
         if let currentStep = currentStep(for: upperValue),
             let label = labelDelegate?.labelForStep(at: currentStep) {
-            maxLabel.string = label.withDefaultAttributes
+            maxLabel.string = label.asAttributedString
             
         } else {
-            maxLabel.string = upperValue.asAttributedString
+            maxLabel.string = upperValue.asRoundedAttributedString
         }
         setNeedsLayout()
     }
