@@ -8,19 +8,9 @@
 
 import UIKit
 
-// MARK: General update funcs
+// MARK: General update functions
 
 extension DoubleSlider {
-    
-    // When stepDistance is set to nil, then steps are deactivated
-    private var stepDistance: CGFloat { //TODO: check
-        guard let numberOfSteps = numberOfSteps else {
-            return 0.0
-        }
-        
-        let distance = maxValue / Double(numberOfSteps)
-        return bounds.width * CGFloat(distance)
-    }
     
     open func updateLayerFrames() {
         CATransaction.begin()
@@ -65,6 +55,16 @@ extension DoubleSlider {
     public func positionForValue(value: Double) -> Double {
         let widthDifference = Double(bounds.width - thumbWidth)
         return widthDifference * (value - minValue) / (maxValue - minValue) + Double(thumbWidth / 2.0)
+    }
+    
+    // When stepDistance is set to nil, then steps are deactivated
+    private var stepDistance: CGFloat { //TODO: check
+        guard let numberOfSteps = numberOfSteps else {
+            return 0.0
+        }
+        
+        let distance = maxValue / Double(numberOfSteps)
+        return bounds.width * CGFloat(distance)
     }
 }
 

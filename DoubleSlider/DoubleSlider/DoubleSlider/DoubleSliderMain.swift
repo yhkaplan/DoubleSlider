@@ -23,13 +23,13 @@ public enum Colors {
 open class DoubleSlider: UIControl {
     
     // Track values
-    public var minValue: Double = 0.0 {
+    public var minValue: Double = 0.0 { //TODO: make read-only
         didSet {
             updateLayerFrames()
         }
     }
     
-    public var maxValue: Double = 1.0 {
+    public var maxValue: Double = 1.0 { //TODO: make read-only
         didSet {
             updateLayerFrames()
         }

@@ -16,7 +16,13 @@ extension Double {
     // This is used to provide a formatted version of the label
     // string for the current upper/lower value
     var asRoundedAttributedString: NSAttributedString {
-        return "\(self.roundedToTwoPlaces)".asAttributedString
+        // Prevents negative numbers from appearing in labels
+        var value = self.roundedToTwoPlaces
+        if value < 0.0 { // this should equal minValue
+            value = 0.00 // this should equal minValue
+        }
+        
+        return "\(value)".asAttributedString
     }
     
 }
