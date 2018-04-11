@@ -15,7 +15,7 @@
 		03763D6120724326000AFB80 /* DoubleSliderMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5D20724326000AFB80 /* DoubleSliderMain.swift */; };
 		03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */; };
 		03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */; };
-		03763D6520724331000AFB80 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D6420724330000AFB80 /* DoubleExtensions.swift */; };
+		03763D6520724331000AFB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D6420724330000AFB80 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		03763D5D20724326000AFB80 /* DoubleSliderMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderMain.swift; sourceTree = "<group>"; };
 		03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderLabelDelegate.swift; sourceTree = "<group>"; };
 		03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderTouchTracking.swift; sourceTree = "<group>"; };
-		03763D6420724330000AFB80 /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		03763D6420724330000AFB80 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 		03763D66207243B7000AFB80 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				03763D6420724330000AFB80 /* DoubleExtensions.swift */,
+				03763D6420724330000AFB80 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */,
 				03763D5A20724317000AFB80 /* DoubleSliderLayerProtocol.swift in Sources */,
 				03763D6020724326000AFB80 /* DoubleSliderUpdateFunctions.swift in Sources */,
-				03763D6520724331000AFB80 /* DoubleExtensions.swift in Sources */,
+				03763D6520724331000AFB80 /* Extensions.swift in Sources */,
 				03763D5B20724317000AFB80 /* DoubleSliderTrackLayer.swift in Sources */,
 				03763D6120724326000AFB80 /* DoubleSliderMain.swift in Sources */,
 				03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */,

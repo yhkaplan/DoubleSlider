@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @objc func printVal(_ control: DoubleSlider) {
-        //print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
+        print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
     }
 }
 

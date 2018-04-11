@@ -71,32 +71,34 @@ extension DoubleSlider {
 // MARK: Label related funcs
 
 extension DoubleSlider {
+    
+    // This is used to provide a formatted version of the label
+    // string for the current lower value
+    private var lowerValueString: NSAttributedString {
+        return "\(lowerValue.roundedToTwoPlaces)".withAttributes
+    }
+
+    // This is used to provide a formatted version of the label
+    // string for the current upper value
+    private var upperValueString: NSAttributedString {
+        return "\(upperValue.roundedToTwoPlaces)".withAttributes
+    }
         
     private func updateLabelValues() {
-        
-        let rawMinString = "\(lowerValue.roundedToTwoPlaces)"
-        let rawMaxString = "\(upperValue.roundedToTwoPlaces)"
-        
-        let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
-            NSAttributedStringKey.foregroundColor: Colors.textGray
-        ]
-        
         if let currentStep = currentStep(for: lowerValue),
             let label = labelDelegate?.labelForStep(at: currentStep) {
-            minLabel.string = NSAttributedString(string: label, attributes: attributes)
+            minLabel.string = label.withAttributes
         
         } else {
-            minLabel.string = NSAttributedString(string: rawMinString, attributes: attributes)
+            minLabel.string = lowerValueString
         }
-        
         
         if let currentStep = currentStep(for: upperValue),
             let label = labelDelegate?.labelForStep(at: currentStep) {
-            maxLabel.string = NSAttributedString(string: label, attributes: attributes)
+            maxLabel.string = label.withAttributes
             
         } else {
-            maxLabel.string = NSAttributedString(string: rawMaxString, attributes: attributes)
+            maxLabel.string = upperValueString
         }
         setNeedsLayout()
     }
