@@ -39,7 +39,7 @@ open class DoubleSlider: UIControl {
         }
     }
     
-    public var numberOfSteps: Int? = nil {
+    public var numberOfSteps: Int = 0 {
         didSet {
             updateLayerFrames()
         }

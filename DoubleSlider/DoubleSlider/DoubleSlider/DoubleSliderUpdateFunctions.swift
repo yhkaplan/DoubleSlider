@@ -21,8 +21,8 @@ extension DoubleSlider {
         let lowerThumbCenter = CGFloat(positionForValue(value: lowerValue))
         var lowerX = lowerThumbCenter - thumbWidth / 2.0
         
-        if let numberOfSteps = numberOfSteps, numberOfSteps > 0 { //TODO: make this extension or helper method
-            
+        //TODO: comment this out for smooth-stepping
+        if numberOfSteps > 0 { //TODO: make this extension or helper method
             lowerX = CGFloat(roundf(Float(lowerX / stepDistance))) * stepDistance
         }
         
@@ -32,8 +32,9 @@ extension DoubleSlider {
         // Update upper values
         let upperThumbCenter = CGFloat(positionForValue(value: upperValue))
         var upperX = upperThumbCenter - thumbWidth / 2.0
-        
-        if let numberOfSteps = numberOfSteps, numberOfSteps > 0 {
+
+        //TODO: comment this out for smooth-stepping
+        if numberOfSteps > 0 {
             upperX = CGFloat(roundf(Float(upperX / stepDistance))) * stepDistance
         }
         
@@ -57,9 +58,8 @@ extension DoubleSlider {
         return widthDifference * (value - minValue) / (maxValue - minValue) + Double(thumbWidth / 2.0)
     }
     
-    // When stepDistance is set to nil, then steps are deactivated
-    private var stepDistance: CGFloat { //TODO: check
-        guard let numberOfSteps = numberOfSteps else {
+    private var stepDistance: CGFloat {
+        guard numberOfSteps > 0 else {
             return 0.0
         }
         
@@ -94,7 +94,7 @@ extension DoubleSlider {
     }
     
     private func currentStep(for value: Double) -> Int? {
-        guard let numberOfSteps = numberOfSteps else { return nil }
+        guard numberOfSteps > 0 else { return nil }
         
         return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }

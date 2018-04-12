@@ -35,8 +35,8 @@ class ViewController: UIViewController {
         
         let doubleSlider = DoubleSlider(frame: frame)
         doubleSlider.translatesAutoresizingMaskIntoConstraints = false
-//        doubleSlider.labelDelegate = self
-//        doubleSlider.numberOfSteps = labels.count
+        doubleSlider.labelDelegate = self
+        doubleSlider.numberOfSteps = labels.count
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         
         backgroundView.addSubview(doubleSlider)
