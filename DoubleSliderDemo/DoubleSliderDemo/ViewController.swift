@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var normalSlider: UISlider!
     
-    public var labels: [String] = []
+    var labels: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,6 +8,7 @@
 
 extension Double {
     
+    // Rounds double to two decimal places
     var roundedToTwoPlaces: Double {
         let divisor = pow(10.0, 2.0)
         return (self * divisor).rounded() / divisor
