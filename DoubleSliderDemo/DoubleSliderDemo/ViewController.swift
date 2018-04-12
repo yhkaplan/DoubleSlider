@@ -14,31 +14,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var normalSlider: UISlider!
     
-    public let labels: [(label: String, value: Int)] = [
-        ("$0", 0),
-        ("$10", 15),
-        ("$25", 25),
-        ("$50", 50),
-        ("$100", 100),
-        ("$250", 250),
-        ("$500", 500),
-        ("No limit", -1)
-    ]
+    public var labels: [String] = []
     
-    override func viewDidLoad() {       
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        makeLabels()
+        setupDoubleSlider()
+    }
+    
+    private func makeLabels() {
+        for i in stride(from: 0, to: 300, by: 10) {
+            labels.append("$\(i)")
+        }
+        labels.append("No limit")
+    }
+    
+    private func setupDoubleSlider() {
         let height: CGFloat = 34.0 //TODO: make this the default height
         let width = view.bounds.width - 40.0
         let frame = CGRect(x: backgroundView.bounds.minX,
-                           y: backgroundView.bounds.midY - (height / 2.0),
-                           width: width,
-                           height: height)
-        
+        y: backgroundView.bounds.midY - (height / 2.0),
+        width: width,
+        height: height)
+    
         let doubleSlider = DoubleSlider(frame: frame)
         doubleSlider.translatesAutoresizingMaskIntoConstraints = false
         doubleSlider.labelDelegate = self
         doubleSlider.numberOfSteps = labels.count
+        doubleSlider.smoothStepping = true
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
-        
+    
         backgroundView.addSubview(doubleSlider)
     }
     
@@ -49,6 +55,6 @@ class ViewController: UIViewController {
 
 extension ViewController: DoubleSliderLabelDelegate {
     func labelForStep(at index: Int) -> String? {
-        return labels.item(at: index)?.label
+        return labels.item(at: index)
     }
 }

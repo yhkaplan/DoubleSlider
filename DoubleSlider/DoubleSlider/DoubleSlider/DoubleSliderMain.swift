@@ -45,6 +45,16 @@ open class DoubleSlider: UIControl {
         }
     }
     
+    // This bool turns off traditional stepping behavior,
+    // allowing for custom labels set at given intervals
+    // that don't "jump" from step to step, but instead
+    // transition smoothly
+    public var smoothStepping: Bool = false {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
     // This inset is shared between the thumb layers and
     // the track layer so the track layer doesn't extend
     // beyond the thumbs. Also, this value makes sure

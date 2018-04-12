@@ -21,8 +21,7 @@ extension DoubleSlider {
         let lowerThumbCenter = CGFloat(positionForValue(value: lowerValue))
         var lowerX = lowerThumbCenter - thumbWidth / 2.0
         
-        //TODO: comment this out for smooth-stepping
-        if numberOfSteps > 0 { //TODO: make this extension or helper method
+        if !smoothStepping && numberOfSteps > 0 { //TODO: make this extension or helper method
             lowerX = CGFloat(roundf(Float(lowerX / stepDistance))) * stepDistance
         }
         
@@ -33,8 +32,7 @@ extension DoubleSlider {
         let upperThumbCenter = CGFloat(positionForValue(value: upperValue))
         var upperX = upperThumbCenter - thumbWidth / 2.0
 
-        //TODO: comment this out for smooth-stepping
-        if numberOfSteps > 0 {
+        if !smoothStepping && numberOfSteps > 0 {
             upperX = CGFloat(roundf(Float(upperX / stepDistance))) * stepDistance
         }
         
