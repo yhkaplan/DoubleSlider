@@ -42,7 +42,6 @@ extension DoubleSlider {
         }
         
         // update values
-        // Note: currently using target action pattern, but prob better to use swifty delegate pattern
         sendActions(for: .valueChanged)
         
         return true

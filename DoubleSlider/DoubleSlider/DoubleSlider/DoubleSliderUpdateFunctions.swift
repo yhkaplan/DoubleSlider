@@ -17,25 +17,44 @@ extension DoubleSlider {
         CATransaction.setDisableActions(true) // Prevents interaction while updating
         
         //TODO: simplify below into helper methods / closures
-        // Update lower values
+        
+        /// Get values
+
+        // Get lower values
         let lowerThumbCenter = positionForValue(value: lowerValue)
         var lowerThumbMinX = lowerThumbCenter - thumbWidth / 2.0
+        let lowerThumbMaxX = lowerThumbMinX + thumbWidth
+        // Get upper values
+        let upperThumbCenter = positionForValue(value: upperValue)
+        var upperThumbMinX = upperThumbCenter - thumbWidth / 2.0
         
-        if !smoothStepping && numberOfSteps > 0 { //TODO: make this extension or helper method
-            lowerThumbMinX = CGFloat(roundf(Float(lowerThumbMinX / stepDistance))) * stepDistance
+        /// Update lower values
+        if lowerThumbLayer.isHighlighted {
+            if !smoothStepping && numberOfSteps > 0 { //TODO: make this extension or helper method
+                lowerThumbMinX = CGFloat(roundf(Float(lowerThumbMinX / stepDistance))) * stepDistance
+            }
+            
+            // Prevents thumbs from overlapping
+            if lowerThumbMaxX >= upperThumbMinX {
+                lowerThumbMinX = upperThumbMinX - thumbWidth + 6.0
+            }
         }
         
         lowerThumbLayer.frame = CGRect(x: lowerThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
-        
-        // Update upper values
-        let upperThumbCenter = positionForValue(value: upperValue)
-        var upperThumbMinX = upperThumbCenter - thumbWidth / 2.0
 
-        if !smoothStepping && numberOfSteps > 0 {
-            upperThumbMinX = CGFloat(roundf(Float(upperThumbMinX / stepDistance))) * stepDistance
+        /// Update upper values
+        if upperThumbLayer.isHighlighted {
+            if !smoothStepping && numberOfSteps > 0 {
+                upperThumbMinX = CGFloat(roundf(Float(upperThumbMinX / stepDistance))) * stepDistance
+            }
+            
+            // Prevents thumbs from overlapping
+            if upperThumbMinX <= lowerThumbMaxX {
+                upperThumbMinX = lowerThumbMaxX - 6.0
+            }
         }
-        
+            
         upperThumbLayer.frame = CGRect(x: upperThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
