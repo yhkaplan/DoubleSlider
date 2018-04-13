@@ -119,11 +119,11 @@ extension DoubleSlider {
             minLabel.position = newMinLabelCenter
             maxLabel.position = newMaxLabelCenter
             
-            if minLabel.frame.minX < 0.0 {
+            if minLabel.frame.minX < lowerLabelMargin {
                 minLabel.frame.origin.x = minLabel.frame.minX + 4.0
             }
             
-            if maxLabel.frame.maxX > frame.width {
+            if maxLabel.frame.maxX > upperLabelMargin {
                 maxLabel.frame.origin.x = frame.width - maxLabel.frame.width - 4.0
             }
             

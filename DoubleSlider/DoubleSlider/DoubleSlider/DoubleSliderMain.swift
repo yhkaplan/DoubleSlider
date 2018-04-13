@@ -100,6 +100,12 @@ open class DoubleSlider: UIControl {
     
     public let spaceBetweenThumbAndLabel: CGFloat = 18.0
     
+    // This value is the farthest left that a label can move
+    public lazy var lowerLabelMargin: CGFloat = 0.0
+    
+    // This value is the farthest right that a label can move
+    public lazy var upperLabelMargin: CGFloat = frame.width
+    
     public weak var labelDelegate: DoubleSliderLabelDelegate?
     
     // Render components
