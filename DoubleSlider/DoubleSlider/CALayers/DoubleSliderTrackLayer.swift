@@ -33,8 +33,8 @@ public class DoubleSliderTrackLayer: CALayer, DoubleSliderLayer {
         
         // Fill highlighted range
         ctx.setFillColor(slider.trackHighlightTintColor.cgColor)
-        let lowerValuePosition = CGFloat(slider.positionForValue(value: slider.lowerValue))
-        let upperValuePosition = CGFloat(slider.positionForValue(value: slider.upperValue))
+        let lowerValuePosition = slider.positionForValue(value: slider.lowerValue)
+        let upperValuePosition = slider.positionForValue(value: slider.upperValue)
         let rect = CGRect(x: lowerValuePosition,
                           y: 0.0,
                           width: upperValuePosition - lowerValuePosition,
