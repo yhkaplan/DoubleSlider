@@ -35,8 +35,8 @@ extension DoubleSlider {
             }
             
             // Prevents thumbs from overlapping
-            if lowerThumbMaxX >= upperThumbMinX {
-                lowerThumbMinX = upperThumbMinX - thumbWidth + 6.0
+            if lowerThumbMaxX > upperThumbMinX {
+                lowerThumbMinX = upperThumbMinX - thumbWidth + (layerInset * 2.0)
             }
         }
         
@@ -50,8 +50,8 @@ extension DoubleSlider {
             }
             
             // Prevents thumbs from overlapping
-            if upperThumbMinX <= lowerThumbMaxX {
-                upperThumbMinX = lowerThumbMaxX - 6.0
+            if upperThumbMinX < lowerThumbMaxX {
+                upperThumbMinX = lowerThumbMaxX - (layerInset * 2.0)
             }
         }
             
