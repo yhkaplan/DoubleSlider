@@ -19,24 +19,24 @@ extension DoubleSlider {
         //TODO: simplify below into helper methods / closures
         // Update lower values
         let lowerThumbCenter = positionForValue(value: lowerValue)
-        var lowerX = lowerThumbCenter - thumbWidth / 2.0
+        var lowerThumbMinX = lowerThumbCenter - thumbWidth / 2.0
         
         if !smoothStepping && numberOfSteps > 0 { //TODO: make this extension or helper method
-            lowerX = CGFloat(roundf(Float(lowerX / stepDistance))) * stepDistance
+            lowerThumbMinX = CGFloat(roundf(Float(lowerThumbMinX / stepDistance))) * stepDistance
         }
         
-        lowerThumbLayer.frame = CGRect(x: lowerX, y: 0.0, width: thumbWidth, height: thumbWidth)
+        lowerThumbLayer.frame = CGRect(x: lowerThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
         
         // Update upper values
         let upperThumbCenter = positionForValue(value: upperValue)
-        var upperX = upperThumbCenter - thumbWidth / 2.0
+        var upperThumbMinX = upperThumbCenter - thumbWidth / 2.0
 
         if !smoothStepping && numberOfSteps > 0 {
-            upperX = CGFloat(roundf(Float(upperX / stepDistance))) * stepDistance
+            upperThumbMinX = CGFloat(roundf(Float(upperThumbMinX / stepDistance))) * stepDistance
         }
         
-        upperThumbLayer.frame = CGRect(x: upperX, y: 0.0, width: thumbWidth, height: thumbWidth)
+        upperThumbLayer.frame = CGRect(x: upperThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
         trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
@@ -50,8 +50,7 @@ extension DoubleSlider {
         CATransaction.commit()
     }
     
-    //TODO: simplify with more constants
-    public func positionForValue(value: Double) -> CGFloat {
+    func positionForValue(value: Double) -> CGFloat {
         let widthDifference = bounds.width - thumbWidth
         return widthDifference * CGFloat(value - minValue) / CGFloat(maxValue - minValue) + (thumbWidth / 2.0)
     }
