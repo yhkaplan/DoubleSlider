@@ -65,7 +65,8 @@ open class DoubleSlider: UIControl {
         }
     }
     
-    // Colors
+    // MARK: - Colors
+    
     public var trackTintColor: UIColor = Colors.defaultGray {
         didSet {
             trackLayer.setNeedsDisplay()
@@ -84,6 +85,8 @@ open class DoubleSlider: UIControl {
             upperThumbLayer.setNeedsDisplay()
         }
     }
+    
+    // MARK: - General appearance
     
     public var roundedness: CGFloat = 1.0 {
         didSet {
@@ -138,8 +141,8 @@ open class DoubleSlider: UIControl {
     
     private func setupLayer(_ msLayer: CALayer) {
         
-        // Set the doubleSlider var for CALayers that
-        // conform to DoubleSliderLayer
+        // Set the doubleSlider delegate for CALayers that
+        // conform to DoubleSliderLayer protocol
         if let msLayer = msLayer as? DoubleSliderLayer {
             msLayer.doubleSlider = self
         }
