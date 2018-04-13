@@ -11,26 +11,26 @@ import UIKit
 // The DoubleSlider class is the main class that implements the DoubleSlider
 // control. Its main methods are marked open, so they can be subclassed and
 // overridden to add or change behaviors
-open class DoubleSlider: UIControl {
+@IBDesignable open class DoubleSlider: UIControl {
     
     // Track values
     public private(set) var minValue: Double = 0.0
     
     public private(set) var maxValue: Double = 1.0
     
-    public var lowerValue: Double = 0.2 {
+    @IBInspectable public var lowerValue: Double = 0.2 {
         didSet {
             updateLayerFrames()
         }
     }
     
-    public var upperValue: Double = 0.8 {
+    @IBInspectable public var upperValue: Double = 0.8 {
         didSet {
             updateLayerFrames()
         }
     }
     
-    public var numberOfSteps: Int = 0 {
+    @IBInspectable public var numberOfSteps: Int = 0 {
         didSet {
             updateLayerFrames()
         }
@@ -40,7 +40,7 @@ open class DoubleSlider: UIControl {
     // allowing for custom labels set at given intervals
     // that don't "jump" from step to step, but instead
     // transition smoothly
-    public var smoothStepping: Bool = false {
+    @IBInspectable public var smoothStepping: Bool = false {
         didSet {
             updateLayerFrames()
         }
@@ -51,14 +51,14 @@ open class DoubleSlider: UIControl {
     // beyond the thumbs. Also, this value makes sure
     // that the shadows found on the thumb layer aren't
     // cut off.
-    public var layerInset: CGFloat = 3.0 {
+    @IBInspectable public var layerInset: CGFloat = 3.0 {
         didSet {
             updateLayerFrames()
         }
     }
     
     // Override this to show only one label, etc.
-    open var labelsAreHidden: Bool = false {
+    @IBInspectable open var labelsAreHidden: Bool = false {
         didSet {
             minLabel.isHidden = labelsAreHidden
             maxLabel.isHidden = labelsAreHidden
@@ -67,19 +67,19 @@ open class DoubleSlider: UIControl {
     
     // MARK: - Colors
     
-    public var trackTintColor: UIColor = Colors.defaultGray {
+    @IBInspectable public var trackTintColor: UIColor = Colors.defaultGray {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    public var trackHighlightTintColor: UIColor = Colors.defaultBlue {
+    @IBInspectable public var trackHighlightTintColor: UIColor = Colors.defaultBlue {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    public var thumbTintColor: UIColor = Colors.defaultWhite {
+    @IBInspectable public var thumbTintColor: UIColor = Colors.defaultWhite {
         didSet {
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
@@ -88,7 +88,7 @@ open class DoubleSlider: UIControl {
     
     // MARK: - General appearance
     
-    public var roundedness: CGFloat = 1.0 {
+    @IBInspectable public var roundedness: CGFloat = 1.0 {
         didSet {
             trackLayer.setNeedsDisplay()
             lowerThumbLayer.setNeedsDisplay()
@@ -96,15 +96,15 @@ open class DoubleSlider: UIControl {
         }
     }
     
-    public let minimumSpaceBetweenLabels: CGFloat = 0.0
+    @IBInspectable public let minimumSpaceBetweenLabels: CGFloat = 0.0
     
-    public let spaceBetweenThumbAndLabel: CGFloat = 18.0
+    @IBInspectable public let spaceBetweenThumbAndLabel: CGFloat = 18.0
     
     // This value is the farthest left that a label can move
-    public lazy var lowerLabelMargin: CGFloat = 0.0
+    @IBInspectable public lazy var lowerLabelMargin: CGFloat = 0.0
     
     // This value is the farthest right that a label can move
-    public lazy var upperLabelMargin: CGFloat = frame.width
+    @IBInspectable public lazy var upperLabelMargin: CGFloat = frame.width
     
     public weak var labelDelegate: DoubleSliderLabelDelegate?
     
