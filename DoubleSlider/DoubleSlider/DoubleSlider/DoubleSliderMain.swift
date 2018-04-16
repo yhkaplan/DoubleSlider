@@ -66,7 +66,12 @@ import UIKit
             return nil
         }
         
-        return Double(stepIndex + 1) * stepDistanceAsDouble
+        // This prevents the thumb from looking slightly off at minValue
+        if stepIndex == 0 { return minValue }
+        // This prevents the thumb from looking slightly off at maxValue
+        if stepIndex == numberOfSteps - 1 { return maxValue }
+        
+        return Double(stepIndex + 1) * stepDistanceAsDouble - (stepDistanceAsDouble / 2.0)
     }
     
     //TODO: think of a better name for this

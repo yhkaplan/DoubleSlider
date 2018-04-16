@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     private func makeLabels() {
-        for i in stride(from: 0, to: 300, by: 10) {
+        for i in stride(from: 0, to: 300, by: 5) {
             labels.append("$\(i)")
         }
         labels.append("No limit")
@@ -48,6 +48,9 @@ class ViewController: UIViewController {
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = view.bounds.maxX
         
+        doubleSlider.stepIndexForLowerValue = 0 //TODO: rename to lowerValueStepIndex
+        doubleSlider.stepIndexForUpperValue = labels.count - 1  //TODO: rename to upperValueStepIndex
+        
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         doubleSlider.addTarget(self, action: #selector(finishChanging(_:)), for: .editingDidEnd)
     
@@ -65,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @objc func finishChanging(_ control: DoubleSlider) {
-        print("Final Lower: \(control.stepIndexForLowerValue!) Final Upper: \(control.stepIndexForUpperValue!)")
+        print("Final Lower: \(control.stepIndexForLowerValue) Final Upper: \(control.stepIndexForUpperValue)")
     }
 }
 
