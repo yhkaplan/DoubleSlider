@@ -109,7 +109,8 @@ extension DoubleSlider {
         setNeedsLayout()
     }
     
-    private func currentStep(for value: Double) -> Int? {
+    //TODO: rename to stepIndexfor
+    func currentStep(for value: Double) -> Int? {
         guard numberOfSteps > 0 else { return nil }
         
         return Int(round((value - minValue) * Double(numberOfSteps - 1)))

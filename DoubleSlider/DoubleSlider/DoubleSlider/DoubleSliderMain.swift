@@ -36,6 +36,14 @@ import UIKit
         }
     }
     
+    public var stepIndexForLowerValue: Int? {
+        return currentStep(for: lowerValue)
+    }
+
+    public var stepIndexForUpperValue: Int? {
+        return currentStep(for: upperValue)
+    }
+    
     // This bool turns off traditional stepping behavior,
     // allowing for custom labels set at given intervals
     // that don't "jump" from step to step, but instead

@@ -50,6 +50,9 @@ extension DoubleSlider {
     override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         lowerThumbLayer.isHighlighted = false
         upperThumbLayer.isHighlighted = false
+        
+        // declare that the change finished
+        sendActions(for: .editingDidEnd)
     }
     
     private func boundValue(value: Double, lowerValue: Double, upperValue: Double) -> Double {

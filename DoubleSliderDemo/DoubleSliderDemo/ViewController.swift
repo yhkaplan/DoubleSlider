@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var normalSlider: UISlider!
     
     var labels: [String] = []
+    var doubleSlider: DoubleSlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
         width: width,
         height: height)
     
-        let doubleSlider = DoubleSlider(frame: frame)
+        doubleSlider = DoubleSlider(frame: frame)
         doubleSlider.translatesAutoresizingMaskIntoConstraints = false
         
         doubleSlider.labelDelegate = self
@@ -48,12 +49,23 @@ class ViewController: UIViewController {
         doubleSlider.upperLabelMargin = view.bounds.maxX
         
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
+        doubleSlider.addTarget(self, action: #selector(finishChanging(_:)), for: .editingDidEnd)
     
         backgroundView.addSubview(doubleSlider)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        doubleSlider.removeTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
+    }
+    
     @objc func printVal(_ control: DoubleSlider) {
         print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
+    }
+    
+    @objc func finishChanging(_ control: DoubleSlider) {
+        print("Final Lower: \(control.stepIndexForLowerValue!) Final Upper: \(control.stepIndexForUpperValue!)")
     }
 }
 
