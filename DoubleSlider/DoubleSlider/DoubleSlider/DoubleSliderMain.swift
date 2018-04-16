@@ -183,29 +183,26 @@ import UIKit
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialSetup()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupLayer(trackLayer)
-        setupLayer(lowerThumbLayer)
-        setupLayer(upperThumbLayer)
-        setupLayer(minLabel)
-        setupLayer(maxLabel)
-        
-        updateLayerFrames()
+        initialSetup()
     }
     
-    private func setupLayer(_ msLayer: CALayer) {
-        
-        // Set the doubleSlider delegate for CALayers that
-        // conform to DoubleSliderLayer protocol
-        if let msLayer = msLayer as? DoubleSliderLayer {
-            msLayer.doubleSlider = self
+    private func initialSetup() {
+        [trackLayer, lowerThumbLayer, upperThumbLayer, minLabel, maxLabel].forEach { caLayer in
+            // Set the doubleSlider delegate for CALayers that
+            // conform to DoubleSliderLayer protocol
+            if let caLayer = caLayer as? DoubleSliderLayer {
+                caLayer.doubleSlider = self
+            }
+            
+            caLayer.contentsScale = UIScreen.main.scale
+            layer.addSublayer(caLayer)
         }
         
-        msLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(msLayer)
+        updateLayerFrames()
     }
 }
