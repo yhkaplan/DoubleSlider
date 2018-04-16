@@ -36,8 +36,8 @@ import UIKit
         }
     }
     
-    
-    public var stepIndexForLowerValue: Int {
+    // lowerValue as a step index (int)
+    public var lowerValueStepIndex: Int {
         // Return 0 if steps don't exist
         get {
             return stepIndex(for: lowerValue) ?? 0
@@ -49,7 +49,8 @@ import UIKit
         }
     }
 
-    public var stepIndexForUpperValue: Int {
+    // upperValue as a step index (int)
+    public var upperValueStepIndex: Int {
         // Return 0 if steps don't exist
         get {
             return stepIndex(for: upperValue) ?? 0

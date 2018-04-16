@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = view.bounds.maxX
         
-        doubleSlider.stepIndexForLowerValue = 0 //TODO: rename to lowerValueStepIndex
-        doubleSlider.stepIndexForUpperValue = labels.count - 1  //TODO: rename to upperValueStepIndex
+        doubleSlider.lowerValueStepIndex = 0 //TODO: rename to lowerValueStepIndex
+        doubleSlider.upperValueStepIndex = labels.count - 1  //TODO: rename to upperValueStepIndex
         
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         doubleSlider.addTarget(self, action: #selector(finishChanging(_:)), for: .editingDidEnd)
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @objc func finishChanging(_ control: DoubleSlider) {
-        print("Final Lower: \(control.stepIndexForLowerValue) Final Upper: \(control.stepIndexForUpperValue)")
+        print("Final Lower: \(control.lowerValueStepIndex) Final Upper: \(control.upperValueStepIndex)")
     }
 }
 
