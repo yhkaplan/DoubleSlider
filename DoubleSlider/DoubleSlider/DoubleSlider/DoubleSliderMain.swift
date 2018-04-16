@@ -36,12 +36,44 @@ import UIKit
         }
     }
     
-    public var stepIndexForLowerValue: Int? {
-        return stepIndex(for: lowerValue)
+    
+    public var stepIndexForLowerValue: Int {
+        // Return 0 if steps don't exist
+        get {
+            return stepIndex(for: lowerValue) ?? 0
+        }
+        // Don't change lowerValue if steps aren't set
+        set(newIndex) {
+            lowerValue = value(for: newIndex) ?? lowerValue
+            updateLayerFrames()
+        }
     }
 
-    public var stepIndexForUpperValue: Int? {
-        return stepIndex(for: upperValue)
+    public var stepIndexForUpperValue: Int {
+        // Return 0 if steps don't exist
+        get {
+            return stepIndex(for: upperValue) ?? 0
+        }
+        // Don't change upperValue if steps aren't set
+        set(newIndex) {
+            upperValue = value(for: newIndex) ?? upperValue
+            updateLayerFrames()
+        }
+    }
+
+    private func value(for stepIndex: Int) -> Double? {
+        guard let stepDistanceAsDouble = stepDistanceAsDouble else {
+            return nil
+        }
+        
+        return Double(stepIndex + 1) * stepDistanceAsDouble
+    }
+    
+    //TODO: think of a better name for this
+    var stepDistanceAsDouble: Double? {
+        guard numberOfSteps > 0 else { return nil }
+        
+        return maxValue / Double(numberOfSteps)
     }
     
     func stepIndex(for value: Double) -> Int? {
