@@ -37,11 +37,17 @@ import UIKit
     }
     
     public var stepIndexForLowerValue: Int? {
-        return currentStep(for: lowerValue)
+        return stepIndex(for: lowerValue)
     }
 
     public var stepIndexForUpperValue: Int? {
-        return currentStep(for: upperValue)
+        return stepIndex(for: upperValue)
+    }
+    
+    func stepIndex(for value: Double) -> Int? {
+        guard numberOfSteps > 0 else { return nil }
+        
+        return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
     
     // This bool turns off traditional stepping behavior,

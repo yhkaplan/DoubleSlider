@@ -91,29 +91,22 @@ extension DoubleSlider {
     // If a custom label is set for the lower or upper value,
     // then that label is used instead of the raw value
     private func updateLabelValues() {
-        if let currentStep = currentStep(for: lowerValue),
-            let label = labelDelegate?.labelForStep(at: currentStep) {
+        if let stepIndex = stepIndex(for: lowerValue),
+            let label = labelDelegate?.labelForStep(at: stepIndex) {
             minLabel.string = label.asAttributedString
         
         } else {
             minLabel.string = lowerValue.asRoundedAttributedString
         }
         
-        if let currentStep = currentStep(for: upperValue),
-            let label = labelDelegate?.labelForStep(at: currentStep) {
+        if let stepIndex = stepIndex(for: upperValue),
+            let label = labelDelegate?.labelForStep(at: stepIndex) {
             maxLabel.string = label.asAttributedString
             
         } else {
             maxLabel.string = upperValue.asRoundedAttributedString
         }
         setNeedsLayout()
-    }
-    
-    //TODO: rename to stepIndexfor
-    func currentStep(for value: Double) -> Int? {
-        guard numberOfSteps > 0 else { return nil }
-        
-        return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
     
     private func labelCenter(for label: DoubleSliderThumbLayer) -> CGPoint {
