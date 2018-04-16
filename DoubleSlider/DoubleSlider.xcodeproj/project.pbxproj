@@ -17,7 +17,19 @@
 		03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */; };
 		03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */; };
 		03763D6520724331000AFB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D6420724330000AFB80 /* Extensions.swift */; };
+		03DDABD52084AA7F00E2BB4A /* DoubleSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDABD42084AA7F00E2BB4A /* DoubleSliderTests.swift */; };
+		03DDABD72084AA8000E2BB4A /* DoubleSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03763D3720724273000AFB80 /* DoubleSlider.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03DDABD82084AA8000E2BB4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03763D2E20724273000AFB80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03763D3620724273000AFB80;
+			remoteInfo = DoubleSlider;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0333886C207F22FE003F5981 /* DoubleSliderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSliderColors.swift; sourceTree = "<group>"; };
@@ -32,6 +44,9 @@
 		03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderLabelDelegate.swift; sourceTree = "<group>"; };
 		03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleSliderTouchTracking.swift; sourceTree = "<group>"; };
 		03763D6420724330000AFB80 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		03DDABD22084AA7F00E2BB4A /* DoubleSliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubleSliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DDABD42084AA7F00E2BB4A /* DoubleSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSliderTests.swift; sourceTree = "<group>"; };
+		03DDABD62084AA8000E2BB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +57,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03DDABCF2084AA7F00E2BB4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DDABD72084AA8000E2BB4A /* DoubleSlider.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				03763D3920724273000AFB80 /* DoubleSlider */,
+				03DDABD32084AA7F00E2BB4A /* DoubleSliderTests */,
 				03763D3820724273000AFB80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				03763D3720724273000AFB80 /* DoubleSlider.framework */,
+				03DDABD22084AA7F00E2BB4A /* DoubleSliderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +128,15 @@
 			path = CALayers;
 			sourceTree = "<group>";
 		};
+		03DDABD32084AA7F00E2BB4A /* DoubleSliderTests */ = {
+			isa = PBXGroup;
+			children = (
+				03DDABD42084AA7F00E2BB4A /* DoubleSliderTests.swift */,
+				03DDABD62084AA8000E2BB4A /* Info.plist */,
+			);
+			path = DoubleSliderTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -135,18 +169,41 @@
 			productReference = 03763D3720724273000AFB80 /* DoubleSlider.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		03DDABD12084AA7F00E2BB4A /* DoubleSliderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03DDABDC2084AA8000E2BB4A /* Build configuration list for PBXNativeTarget "DoubleSliderTests" */;
+			buildPhases = (
+				03DDABCE2084AA7F00E2BB4A /* Sources */,
+				03DDABCF2084AA7F00E2BB4A /* Frameworks */,
+				03DDABD02084AA7F00E2BB4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03DDABD92084AA8000E2BB4A /* PBXTargetDependency */,
+			);
+			name = DoubleSliderTests;
+			productName = DoubleSliderTests;
+			productReference = 03DDABD22084AA7F00E2BB4A /* DoubleSliderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		03763D2E20724273000AFB80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = yhkaplan;
 				TargetAttributes = {
 					03763D3620724273000AFB80 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					03DDABD12084AA7F00E2BB4A = {
+						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -164,12 +221,20 @@
 			projectRoot = "";
 			targets = (
 				03763D3620724273000AFB80 /* DoubleSlider */,
+				03DDABD12084AA7F00E2BB4A /* DoubleSliderTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		03763D3520724273000AFB80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03DDABD02084AA7F00E2BB4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,7 +260,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03DDABCE2084AA7F00E2BB4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03DDABD52084AA7F00E2BB4A /* DoubleSliderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03DDABD92084AA8000E2BB4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03763D3620724273000AFB80 /* DoubleSlider */;
+			targetProxy = 03DDABD82084AA8000E2BB4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		03763D3D20724273000AFB80 /* Debug */ = {
@@ -356,6 +437,32 @@
 			};
 			name = Release;
 		};
+		03DDABDA2084AA8000E2BB4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DoubleSliderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yhkaplan.DoubleSliderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03DDABDB2084AA8000E2BB4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DoubleSliderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yhkaplan.DoubleSliderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -373,6 +480,15 @@
 			buildConfigurations = (
 				03763D4020724273000AFB80 /* Debug */,
 				03763D4120724273000AFB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03DDABDC2084AA8000E2BB4A /* Build configuration list for PBXNativeTarget "DoubleSliderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03DDABDA2084AA8000E2BB4A /* Debug */,
+				03DDABDB2084AA8000E2BB4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
