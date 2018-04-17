@@ -158,7 +158,11 @@ import UIKit
     // This value is the farthest right that a label can move
     @IBInspectable public lazy var upperLabelMargin: CGFloat = frame.width
     
-    public weak var labelDelegate: DoubleSliderLabelDelegate?
+    public weak var labelDelegate: DoubleSliderLabelDelegate? {
+        didSet {
+            updateLayerFrames()
+        }
+    }
     
     // Render components
     public let trackLayer = DoubleSliderTrackLayer()
