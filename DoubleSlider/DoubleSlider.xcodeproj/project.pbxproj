@@ -17,6 +17,12 @@
 		03763D6220724326000AFB80 /* DoubleSliderLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */; };
 		03763D6320724326000AFB80 /* DoubleSliderTouchTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */; };
 		03763D6520724331000AFB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D6420724330000AFB80 /* Extensions.swift */; };
+		039F2E712085A1FA00A2DB79 /* DoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 03763D3A20724273000AFB80 /* DoubleSlider.h */; };
+		039F2E722085A1FA00A2DB79 /* DoubleSliderColors.swift in Headers */ = {isa = PBXBuildFile; fileRef = 0333886C207F22FE003F5981 /* DoubleSliderColors.swift */; };
+		039F2E732085A1FA00A2DB79 /* DoubleSliderLabelDelegate.swift in Headers */ = {isa = PBXBuildFile; fileRef = 03763D5E20724326000AFB80 /* DoubleSliderLabelDelegate.swift */; };
+		039F2E742085A1FA00A2DB79 /* DoubleSliderMain.swift in Headers */ = {isa = PBXBuildFile; fileRef = 03763D5D20724326000AFB80 /* DoubleSliderMain.swift */; };
+		039F2E752085A1FA00A2DB79 /* DoubleSliderUpdateFunctions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 03763D5C20724325000AFB80 /* DoubleSliderUpdateFunctions.swift */; };
+		039F2E762085A1FA00A2DB79 /* DoubleSliderTouchTracking.swift in Headers */ = {isa = PBXBuildFile; fileRef = 03763D5F20724326000AFB80 /* DoubleSliderTouchTracking.swift */; };
 		03DDABD52084AA7F00E2BB4A /* DoubleSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDABD42084AA7F00E2BB4A /* DoubleSliderTests.swift */; };
 		03DDABD72084AA8000E2BB4A /* DoubleSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03763D3720724273000AFB80 /* DoubleSlider.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +154,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		039F2E7020859FFC00A2DB79 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				039F2E712085A1FA00A2DB79 /* DoubleSlider.h in Headers */,
+				039F2E722085A1FA00A2DB79 /* DoubleSliderColors.swift in Headers */,
+				039F2E732085A1FA00A2DB79 /* DoubleSliderLabelDelegate.swift in Headers */,
+				039F2E742085A1FA00A2DB79 /* DoubleSliderMain.swift in Headers */,
+				039F2E752085A1FA00A2DB79 /* DoubleSliderUpdateFunctions.swift in Headers */,
+				039F2E762085A1FA00A2DB79 /* DoubleSliderTouchTracking.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -175,6 +194,7 @@
 			buildPhases = (
 				03DDABCE2084AA7F00E2BB4A /* Sources */,
 				03DDABCF2084AA7F00E2BB4A /* Frameworks */,
+				039F2E7020859FFC00A2DB79 /* Headers */,
 				03DDABD02084AA7F00E2BB4A /* Resources */,
 			);
 			buildRules = (
