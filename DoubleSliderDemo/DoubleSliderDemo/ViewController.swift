@@ -23,11 +23,6 @@ class ViewController: UIViewController {
         
         makeLabels()
         setupDoubleSlider()
-        redDoubleSlider.labelDelegate = self
-        redDoubleSlider.numberOfSteps = 20
-        redDoubleSlider.labelsAreHidden = false
-        redDoubleSlider.lowerValue = 0.0
-        redDoubleSlider.upperValue = 1.0
     }
     
     private func makeLabels() {
@@ -54,8 +49,8 @@ class ViewController: UIViewController {
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = view.bounds.maxX
         
-        doubleSlider.lowerValueStepIndex = 0 //TODO: rename to lowerValueStepIndex
-        doubleSlider.upperValueStepIndex = labels.count - 1  //TODO: rename to upperValueStepIndex
+        doubleSlider.lowerValueStepIndex = 0
+        doubleSlider.upperValueStepIndex = labels.count - 1
         
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
         doubleSlider.addTarget(self, action: #selector(finishChanging(_:)), for: .editingDidEnd)
@@ -79,7 +74,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: DoubleSliderLabelDelegate {
+    
     func labelForStep(at index: Int) -> String? {
         return labels.item(at: index)
     }
+    
 }

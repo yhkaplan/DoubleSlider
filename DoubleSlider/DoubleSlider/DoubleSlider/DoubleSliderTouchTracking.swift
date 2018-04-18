@@ -8,8 +8,10 @@
 
 import UIKit
 
-// MARK: - Touch tracking
 extension DoubleSlider {
+    
+    // MARK: - Touch tracking
+    
     override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         previousLocation = touch.location(in: self)
         
@@ -22,7 +24,6 @@ extension DoubleSlider {
         return lowerThumbLayer.isHighlighted || upperThumbLayer.isHighlighted
     }
     
-    // TODO: simply this func
     override open func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         
@@ -41,7 +42,7 @@ extension DoubleSlider {
             upperValue = boundValue(value: tempValue, lowerValue: lowerValue, upperValue: maxValue)
         }
         
-        // update values
+        // Update values
         sendActions(for: .valueChanged)
         
         return true
@@ -54,6 +55,8 @@ extension DoubleSlider {
         // declare that the change finished
         sendActions(for: .editingDidEnd)
     }
+    
+    // MARK: - Private funcs
     
     private func boundValue(value: Double, lowerValue: Double, upperValue: Double) -> Double {
         return min(max(value, lowerValue), upperValue)
