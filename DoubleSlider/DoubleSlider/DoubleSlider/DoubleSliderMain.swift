@@ -177,7 +177,14 @@ import UIKit
         return CGFloat(bounds.height)
     }
     
-    override open var frame: CGRect { //TODO: is this needed?
+    override open var frame: CGRect {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
+    override open var bounds: CGRect {
+        // Without this, the sizing in AutoLayout would be off
         didSet {
             updateLayerFrames()
         }
@@ -206,7 +213,5 @@ import UIKit
             caLayer.contentsScale = UIScreen.main.scale
             layer.addSublayer(caLayer)
         }
-        
-        updateLayerFrames()
     }
 }

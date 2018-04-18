@@ -89,6 +89,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="I4Z-3N-Og7" id="NhM-aT-esM"/>
                         <outlet property="normalSlider" destination="pms-y0-JKl" id="GhC-jZ-wyG"/>
+                        <outlet property="redDoubleSlider" destination="6FV-1v-HCd" id="cz7-Oe-niO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

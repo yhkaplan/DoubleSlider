@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var normalSlider: UISlider!
+    @IBOutlet weak var redDoubleSlider: DoubleSlider!
     
     var labels: [String] = []
     var doubleSlider: DoubleSlider!
@@ -22,6 +23,11 @@ class ViewController: UIViewController {
         
         makeLabels()
         setupDoubleSlider()
+        redDoubleSlider.labelDelegate = self
+        redDoubleSlider.numberOfSteps = 20
+        redDoubleSlider.labelsAreHidden = false
+        redDoubleSlider.lowerValue = 0.0
+        redDoubleSlider.upperValue = 1.0
     }
     
     private func makeLabels() {
