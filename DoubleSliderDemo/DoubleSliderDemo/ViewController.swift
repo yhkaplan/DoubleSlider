@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         
         makeLabels()
         setupDoubleSlider()
+        
+        redDoubleSlider.labelDelegate = self
+        redDoubleSlider.numberOfSteps = labels.count
+        redDoubleSlider.labelsAreHidden = false
+        redDoubleSlider.smoothStepping = true
     }
     
     private func makeLabels() {
@@ -50,7 +55,7 @@ class ViewController: UIViewController {
         doubleSlider.numberOfSteps = labels.count
         doubleSlider.smoothStepping = true
         doubleSlider.lowerLabelMargin = -20
-        doubleSlider.upperLabelMargin = view.bounds.maxX
+        doubleSlider.upperLabelMargin = doubleSlider.frame.maxX
         
         doubleSlider.lowerValueStepIndex = 0
         doubleSlider.upperValueStepIndex = labels.count - 1
