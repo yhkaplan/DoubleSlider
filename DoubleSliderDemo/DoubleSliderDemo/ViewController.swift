@@ -35,10 +35,13 @@ class ViewController: UIViewController {
     private func setupDoubleSlider() {
         let height: CGFloat = 34.0 //TODO: make this the default height
         let width = view.bounds.width - 40.0
-        let frame = CGRect(x: backgroundView.bounds.minX,
-        y: backgroundView.bounds.midY - (height / 2.0),
-        width: width,
-        height: height)
+        
+        let frame = CGRect(
+            x: backgroundView.bounds.minX,
+            y: backgroundView.bounds.midY - (height / 2.0),
+            width: width,
+            height: height
+        )
     
         doubleSlider = DoubleSlider(frame: frame)
         doubleSlider.translatesAutoresizingMaskIntoConstraints = false
