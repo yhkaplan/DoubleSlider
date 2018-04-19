@@ -14,47 +14,20 @@ extension DoubleSlider {
     
     open func updateLayerFrames() {
         CATransaction.begin()
-        CATransaction.setDisableActions(true) // Prevents interaction while updating
-        
-        //TODO: simplify below into helper methods / closures
-        
-        /// Get values
+        // Prevents interaction while updating
+        CATransaction.setDisableActions(true)
 
         // Get lower values
         let lowerThumbCenter = positionForValue(value: lowerValue)
-        var lowerThumbMinX = lowerThumbCenter - thumbWidth / 2.0
-        let lowerThumbMaxX = lowerThumbMinX + thumbWidth
+        let lowerThumbMinX = lowerThumbCenter - thumbWidth / 2.0
+        
         // Get upper values
         let upperThumbCenter = positionForValue(value: upperValue)
-        var upperThumbMinX = upperThumbCenter - thumbWidth / 2.0
-        
-        /// Update lower values
-        if lowerThumbLayer.isHighlighted {
-            if !smoothStepping && numberOfSteps > 0 { //TODO: make this extension or helper method
-                lowerThumbMinX = CGFloat(roundf(Float(lowerThumbMinX / stepDistance))) * stepDistance
-            }
-            
-            // Prevents thumbs from overlapping
-            if lowerThumbMaxX > upperThumbMinX {
-                lowerThumbMinX = upperThumbMinX - thumbWidth + (layerInset * 2.0)
-            }
-        }
+        let upperThumbMinX = upperThumbCenter - thumbWidth / 2.0
         
         lowerThumbLayer.frame = CGRect(x: lowerThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
-
-        /// Update upper values
-        if upperThumbLayer.isHighlighted {
-            if !smoothStepping && numberOfSteps > 0 {
-                upperThumbMinX = CGFloat(roundf(Float(upperThumbMinX / stepDistance))) * stepDistance
-            }
-            
-            // Prevents thumbs from overlapping
-            if upperThumbMinX < lowerThumbMaxX {
-                upperThumbMinX = lowerThumbMaxX - (layerInset * 2.0)
-            }
-        }
-            
+        
         upperThumbLayer.frame = CGRect(x: upperThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
