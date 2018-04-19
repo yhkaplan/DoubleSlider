@@ -61,8 +61,10 @@ extension DoubleSlider {
         trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
         trackLayer.setNeedsDisplay()
         
-        updateLabelPositions()
         updateLabelValues()
+        updateLabelSizes()
+        updateLabelPositions()
+        
         minLabel.alignmentMode = kCAAlignmentCenter
         maxLabel.alignmentMode = kCAAlignmentCenter
 
@@ -114,12 +116,15 @@ extension DoubleSlider {
         return CGPoint(x: label.frame.midX, y: labelY)
     }
     
+    private func updateLabelSizes() {
+        [minLabel, maxLabel].forEach { label in
+            let width = (label.string as? NSAttributedString)?.size().width ?? 55.0
+            label.frame.size = CGSize(width: width, height: 20.0)
+        }
+    }
+    
     // TODO: split into smaller funcs
     private func updateLabelPositions() {
-        let labelSize = CGSize(width: 55, height: 20)
-        minLabel.frame.size = labelSize
-        maxLabel.frame.size = labelSize
-        
         let newMinLabelCenter = labelCenter(for: lowerThumbLayer)
         let newMaxLabelCenter = labelCenter(for: upperThumbLayer)
         

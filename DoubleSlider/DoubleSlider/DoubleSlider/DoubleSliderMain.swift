@@ -148,6 +148,14 @@ import UIKit
         }
     }
     
+    // This is a class var so it can be overridden at will
+    public class var labelAttributes: [NSAttributedStringKey: Any] {
+        return [
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
+            NSAttributedStringKey.foregroundColor: Colors.textGray
+        ]
+    }
+    
     @IBInspectable public let minimumSpaceBetweenLabels: CGFloat = 0.0
     
     @IBInspectable public let spaceBetweenThumbAndLabel: CGFloat = 18.0

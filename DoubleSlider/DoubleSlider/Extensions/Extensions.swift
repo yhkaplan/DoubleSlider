@@ -25,12 +25,7 @@ extension Double {
 extension String {
     
     var asAttributedString: NSAttributedString {
-        let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
-            NSAttributedStringKey.foregroundColor: Colors.textGray
-        ]
-        
-        return NSAttributedString(string: self, attributes: attributes)
+        return NSAttributedString(string: self, attributes: DoubleSlider.labelAttributes)
     }
     
 }
