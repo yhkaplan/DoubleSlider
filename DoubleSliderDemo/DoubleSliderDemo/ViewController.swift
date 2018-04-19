@@ -60,9 +60,11 @@ class ViewController: UIViewController {
         doubleSlider.lowerValueStepIndex = 0
         doubleSlider.upperValueStepIndex = labels.count - 1
         
+        // You can use traditional notifications
         doubleSlider.addTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
-        doubleSlider.addTarget(self, action: #selector(finishChanging(_:)), for: .editingDidEnd)
-    
+        // Or Swifty delegates
+        doubleSlider.editingDidEndDelegate = self
+        
         backgroundView.addSubview(doubleSlider)
     }
     
@@ -72,19 +74,19 @@ class ViewController: UIViewController {
         doubleSlider.removeTarget(self, action: #selector(printVal(_:)), for: .valueChanged)
     }
     
-    @objc func printVal(_ control: DoubleSlider) {
-        print("Lower: \(control.lowerValue) Upper: \(control.upperValue)")
+    @objc func printVal(_ doubleSlider: DoubleSlider) {
+        print("Lower: \(doubleSlider.lowerValue) Upper: \(doubleSlider.upperValue)")
     }
-    
-    @objc func finishChanging(_ control: DoubleSlider) {
-        print("Final Lower: \(control.lowerValueStepIndex) Final Upper: \(control.upperValueStepIndex)")
+}
+
+extension ViewController: DoubleSliderEditingDidEndDelegate {
+    func editingDidEnd(for doubleSlider: DoubleSlider) {
+        print("Lower Step Index: \(doubleSlider.lowerValueStepIndex) Upper Step Index: \(doubleSlider.upperValueStepIndex)")
     }
 }
 
 extension ViewController: DoubleSliderLabelDelegate {
-    
     func labelForStep(at index: Int) -> String? {
         return labels.item(at: index)
     }
-    
 }

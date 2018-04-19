@@ -164,6 +164,10 @@ import UIKit
         }
     }
     
+    public weak var valueChangedDelegate: DoubleSliderValueChangedDelegate?
+    
+    public weak var editingDidEndDelegate: DoubleSliderEditingDidEndDelegate?
+    
     // Render components
     public let trackLayer = DoubleSliderTrackLayer()
     public let lowerThumbLayer = DoubleSliderThumbLayer()

@@ -42,8 +42,9 @@ extension DoubleSlider {
             upperValue = boundValue(value: tempValue, lowerValue: lowerValue, upperValue: maxValue)
         }
         
-        // Update values
+        // Declare that a value was updated, called continuously
         sendActions(for: .valueChanged)
+        valueChangedDelegate?.valueChanged(for: self)
         
         return true
     }
@@ -52,8 +53,10 @@ extension DoubleSlider {
         lowerThumbLayer.isHighlighted = false
         upperThumbLayer.isHighlighted = false
         
-        // Declare that the change finished
+        // Declare that the change finished, called at the end
+        // of a drag session
         sendActions(for: .editingDidEnd)
+        editingDidEndDelegate?.editingDidEnd(for: self)
     }
     
     // MARK: - Private funcs
