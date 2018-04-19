@@ -52,7 +52,7 @@ extension DoubleSlider {
         lowerThumbLayer.isHighlighted = false
         upperThumbLayer.isHighlighted = false
         
-        // declare that the change finished
+        // Declare that the change finished
         sendActions(for: .editingDidEnd)
     }
     
