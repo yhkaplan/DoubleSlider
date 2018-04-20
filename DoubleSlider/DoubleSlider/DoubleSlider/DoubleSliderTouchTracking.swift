@@ -41,33 +41,33 @@ extension DoubleSlider {
         
         // Update values
         if lowerThumbLayer.isHighlighted {
-            var tempValue = lowerValue + dragValue
-            tempValue = boundValue(value: tempValue, lowerValue: minValue, upperValue: upperValue)
+            var lowerTempValue = lowerValue + dragValue
+            lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
             
             if !smoothStepping && numberOfSteps > 0 {
                 //TODO: implement! step
             }
             
-            if (tempValue + halfMinSpace) > (upperValue - halfMinSpace) {
-                tempValue = upperValue - minimumSpace
+            if (lowerTempValue + halfMinSpace) > (upperValue - halfMinSpace) {
+                lowerTempValue = upperValue - minimumSpace
             }
             
-            lowerValue = tempValue
+            lowerValue = lowerTempValue
             
             
         } else if upperThumbLayer.isHighlighted {
-            var tempValue = upperValue + dragValue
-            tempValue = boundValue(value: tempValue, lowerValue: lowerValue, upperValue: maxValue)
+            var upperTempValue = upperValue + dragValue
+            upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
             
             if !smoothStepping && numberOfSteps > 0 {
                 //TODO: implement! step
             }
             
-            if (tempValue - halfMinSpace) < (lowerValue + halfMinSpace) {
-                tempValue = lowerValue + minimumSpace
+            if (upperTempValue - halfMinSpace) < (lowerValue + halfMinSpace) {
+                upperTempValue = lowerValue + minimumSpace
             }
             
-            upperValue = tempValue
+            upperValue = upperTempValue
         }
         
         // Declare that a value was updated, called continuously
