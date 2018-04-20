@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     private func makeLabels() {
-        for i in stride(from: 0, to: 100, by: 10) {
+        for i in stride(from: 0, to: 200, by: 10) {
             labels.append("$\(i)")
         }
         labels.append("No limit")
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         
         doubleSlider.labelDelegate = self
         doubleSlider.numberOfSteps = labels.count
-        doubleSlider.smoothStepping = true
+        //doubleSlider.smoothStepping = true
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = doubleSlider.frame.maxX + 20
         

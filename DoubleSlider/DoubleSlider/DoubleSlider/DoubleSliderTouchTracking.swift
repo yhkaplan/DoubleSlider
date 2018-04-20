@@ -44,27 +44,28 @@ extension DoubleSlider {
             var lowerTempValue = lowerValue + dragValue
             lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
             
-            if !smoothStepping && numberOfSteps > 0 {
-                //TODO: implement! step
-            }
-            
             if (lowerTempValue + halfMinSpace) > (upperValue - halfMinSpace) {
                 lowerTempValue = upperValue - minimumSpace
             }
             
-            lowerValue = lowerTempValue
+            if !smoothStepping, let stepDist = stepDistanceAsDouble {
+                //TODO: implement! step
+                // TODO: make into separate func stepForIndex that returns a double
+                lowerTempValue = round(lowerTempValue / stepDist) * stepDist
+            }
             
+            lowerValue = lowerTempValue
             
         } else if upperThumbLayer.isHighlighted {
             var upperTempValue = upperValue + dragValue
             upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
             
-            if !smoothStepping && numberOfSteps > 0 {
-                //TODO: implement! step
-            }
-            
             if (upperTempValue - halfMinSpace) < (lowerValue + halfMinSpace) {
                 upperTempValue = lowerValue + minimumSpace
+            }
+            
+            if !smoothStepping, let stepDist = stepDistanceAsDouble {
+                upperTempValue = round(upperTempValue / stepDist) * stepDist
             }
             
             upperValue = upperTempValue
@@ -88,6 +89,12 @@ extension DoubleSlider {
     }
     
     // MARK: - Private funcs
+    
+    private func stepValueAdjusted(for value: Double) -> Double? {
+        guard let stepDist = stepDistanceAsDouble else { return nil }
+        
+        return round(value / stepDist) * stepDist
+    }
     
     private func boundValue(value: Double, lowerValue: Double, upperValue: Double) -> Double {
         return min(max(value, lowerValue), upperValue)
