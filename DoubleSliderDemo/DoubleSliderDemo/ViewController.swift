@@ -40,11 +40,11 @@ class ViewController: UIViewController {
     }
     
     private func setupDoubleSlider() {
-        let height: CGFloat = 34.0 //TODO: make this the default height
-        let width = view.bounds.width - 40.0
+        let height: CGFloat = 38.0 //TODO: make this the default height
+        let width = view.bounds.width - 38.0 
         
         let frame = CGRect(
-            x: backgroundView.bounds.minX,
+            x: backgroundView.bounds.minX - 2.0,
             y: backgroundView.bounds.midY - (height / 2.0),
             width: width,
             height: height
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         doubleSlider.smoothStepping = true
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = doubleSlider.frame.maxX + 20
-
+        
         doubleSlider.lowerValueStepIndex = 0
         doubleSlider.upperValueStepIndex = labels.count - 1
         

@@ -103,7 +103,7 @@ import UIKit
     // beyond the thumbs. Also, this value makes sure
     // that the shadows found on the thumb layer aren't
     // cut off.
-    @IBInspectable public var layerInset: CGFloat = 3.0 {
+    @IBInspectable public var layerInset: CGFloat = 5.0 {
         didSet {
             updateLayerFrames()
         }

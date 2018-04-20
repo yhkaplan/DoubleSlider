@@ -28,16 +28,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4Z-3N-Og7">
-                                        <rect key="frame" x="0.0" y="73.5" width="335" height="300"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="335" height="300"/>
                                         <color key="backgroundColor" red="0.67640516490000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="oqO-dF-55i"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6FV-1v-HCd" customClass="DoubleSlider" customModule="DoubleSlider">
-                                        <rect key="frame" x="0.0" y="426.5" width="335" height="34"/>
+                                        <rect key="frame" x="0.0" y="424.5" width="335" height="38"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="kvS-Bt-FTV"/>
+                                            <constraint firstAttribute="height" constant="38" id="kvS-Bt-FTV"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lowerValue">
@@ -59,7 +59,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-fs-ywW">
-                                        <rect key="frame" x="0.0" y="513.5" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="514.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

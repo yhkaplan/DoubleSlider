@@ -31,7 +31,7 @@ extension DoubleSlider {
         upperThumbLayer.frame = CGRect(x: upperThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
-        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: bounds.height / 2.15) //TODO: may be incorrect
+        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: 18.0) //TODO: may be incorrect
         trackLayer.setNeedsDisplay()
         
         updateLabelValues()
