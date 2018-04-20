@@ -156,9 +156,17 @@ import UIKit
         ]
     }
     
-    @IBInspectable public let minimumSpaceBetweenLabels: CGFloat = 0.0
+    @IBInspectable public var minimumSpaceBetweenLabels: CGFloat = 5.0 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
     
-    @IBInspectable public let spaceBetweenThumbAndLabel: CGFloat = 18.0
+    @IBInspectable public var spaceBetweenThumbAndLabel: CGFloat = 18.0 {
+        didSet {
+            updateLayerFrames()
+        }
+    }
     
     // This value is the farthest left that a label can move
     @IBInspectable public lazy var lowerLabelMargin: CGFloat = 0.0
