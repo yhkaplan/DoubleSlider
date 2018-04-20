@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         
         doubleSlider.labelDelegate = self
         doubleSlider.numberOfSteps = labels.count
-        //doubleSlider.smoothStepping = true
+        doubleSlider.smoothStepping = true
         doubleSlider.lowerLabelMargin = -20
         doubleSlider.upperLabelMargin = doubleSlider.frame.maxX + 20
         

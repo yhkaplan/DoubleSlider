@@ -48,10 +48,8 @@ extension DoubleSlider {
                 lowerTempValue = upperValue - minimumSpace
             }
             
-            if !smoothStepping, let stepDist = stepDistanceAsDouble {
-                //TODO: implement! step
-                // TODO: make into separate func stepForIndex that returns a double
-                lowerTempValue = round(lowerTempValue / stepDist) * stepDist
+            if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
+                lowerTempValue = steppedValue
             }
             
             lowerValue = lowerTempValue
@@ -64,8 +62,8 @@ extension DoubleSlider {
                 upperTempValue = lowerValue + minimumSpace
             }
             
-            if !smoothStepping, let stepDist = stepDistanceAsDouble {
-                upperTempValue = round(upperTempValue / stepDist) * stepDist
+            if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
+                upperTempValue = steppedValue
             }
             
             upperValue = upperTempValue
@@ -90,7 +88,7 @@ extension DoubleSlider {
     
     // MARK: - Private funcs
     
-    private func stepValueAdjusted(for value: Double) -> Double? {
+    private func steppedValue(for value: Double) -> Double? {
         guard let stepDist = stepDistanceAsDouble else { return nil }
         
         return round(value / stepDist) * stepDist
