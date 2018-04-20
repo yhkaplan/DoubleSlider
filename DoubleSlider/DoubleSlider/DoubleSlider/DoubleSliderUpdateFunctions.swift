@@ -105,37 +105,36 @@ extension DoubleSlider {
         let newLeftmostXInMaxLabel = newMaxLabelCenter.x - maxLabel.frame.width / 2.0
         let newSpaceBetweenLabels = newLeftmostXInMaxLabel - newRightmostXInMinLabel
         
-        if newSpaceBetweenLabels > minimumSpaceBetweenLabels {
+        if newSpaceBetweenLabels > minimumSpaceBetweenLabels { // No position conflict between labels
             minLabel.position = newMinLabelCenter
             maxLabel.position = newMaxLabelCenter
             
+            // Position conflict between lowerLabel and lowerLabelMargin
             if minLabel.frame.minX < lowerLabelMargin {
                 minLabel.frame.origin.x = minLabel.frame.minX + 4.0
             }
-            
+
+            // Position conflict between upperLabel and upperLabelMargin
             if maxLabel.frame.maxX > upperLabelMargin {
                 maxLabel.frame.origin.x = frame.width - maxLabel.frame.width - 4.0
             }
             
-        } else {
+            
+        } else { // Positions conflict between labels
             let increaseAmount: CGFloat = minimumSpaceBetweenLabels - newSpaceBetweenLabels
             minLabel.position = CGPoint(x: newMinLabelCenter.x - increaseAmount / 2.0, y: newMinLabelCenter.y)
             maxLabel.position = CGPoint(x: newMaxLabelCenter.x + increaseAmount / 2.0, y: newMaxLabelCenter.y)
-            
-            // Update x if still in the original position
-            if minLabel.position.x == maxLabel.position.x {
-                minLabel.position.x = lowerThumbLayer.frame.midX
-                maxLabel.position.x = lowerThumbLayer.frame.midX + minLabel.frame.width / 2.0 + minimumSpaceBetweenLabels + maxLabel.frame.width / 2.0
-            }
-            
-            if minLabel.frame.minX < 0.0 {
-                minLabel.frame.origin.x = 0.0
+
+            // Adjust labels positions when they collide at the left lowerLabelMargin
+            if minLabel.frame.minX < lowerLabelMargin {
+                minLabel.frame.origin.x = lowerLabelMargin
                 maxLabel.frame.origin.x = minimumSpaceBetweenLabels + minLabel.frame.width
             }
             
-            if maxLabel.frame.maxX > frame.width {
-                maxLabel.frame.origin.x = frame.width - maxLabel.frame.width
-                minLabel.frame.origin.x = maxLabel.frame.origin.x - minimumSpaceBetweenLabels - minimumSpaceBetweenLabels - minLabel.frame.width
+            // Adjust labels positions when they collide at the right upperLabelMargin
+            if maxLabel.frame.maxX > upperLabelMargin {
+                maxLabel.frame.origin.x = upperLabelMargin - maxLabel.frame.width
+                minLabel.frame.origin.x = maxLabel.frame.origin.x - minimumSpaceBetweenLabels - minLabel.frame.width
             }
         }
     }
