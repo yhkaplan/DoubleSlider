@@ -223,7 +223,11 @@ import UIKit
     }
     
     private func initialSetup() {
-        [trackLayer, lowerThumbLayer, upperThumbLayer, minLabel, maxLabel].forEach { caLayer in
+        // The reason that I put the upperThumbLayer before the lowerThumbLayer is to make the
+        // lowerThumbLayer be above the upperThumbLayer in the z axis, which reflects the priority
+        // logic when selecting one thumbLayer when they both overlap. Without this, the lowerLayer is
+        // prioritized even though it is below the upperThumbLayer in the z axis
+        [trackLayer, upperThumbLayer, lowerThumbLayer, minLabel, maxLabel].forEach { caLayer in
             // Set the doubleSlider delegate for CALayers that
             // conform to DoubleSliderLayer protocol
             if let caLayer = caLayer as? DoubleSliderLayer {
