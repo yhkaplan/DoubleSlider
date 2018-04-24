@@ -13,6 +13,8 @@ import UIKit
 // overridden to add or change behaviors
 @IBDesignable open class DoubleSlider: UIControl {
     
+    // Public vars
+    
     // Track values
     public private(set) var minValue: Double = 0.0
     
@@ -60,31 +62,6 @@ import UIKit
             upperValue = value(for: newIndex) ?? upperValue
             updateLayerFrames()
         }
-    }
-    
-    func value(for stepIndex: Int) -> Double? {
-        guard let stepDistance = stepDistance else {
-            return nil
-        }
-        
-        // This prevents the thumb from looking slightly off at minValue
-        if stepIndex == 0 { return minValue }
-        // This prevents the thumb from looking slightly off at maxValue
-        if stepIndex == numberOfSteps - 1 { return maxValue }
-        
-        return Double(stepIndex + 1) * stepDistance - (stepDistance / 2.0)
-    }
-    
-    var stepDistance: Double? {
-        guard numberOfSteps > 0 else { return nil }
-        
-        return maxValue / Double(numberOfSteps)
-    }
-    
-    func stepIndex(for value: Double) -> Int? {
-        guard numberOfSteps > 0 else { return nil }
-        
-        return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
     
     // This bool turns off traditional stepping behavior,
@@ -209,6 +186,33 @@ import UIKit
         }
     }
     
+    // MARK: - Internal funcs/vars
+    
+    var stepDistance: Double? {
+        guard numberOfSteps > 0 else { return nil }
+        
+        return maxValue / Double(numberOfSteps)
+    }
+    
+    func value(for stepIndex: Int) -> Double? {
+        guard let stepDistance = stepDistance else {
+            return nil
+        }
+        
+        // This prevents the thumb from looking slightly off at minValue
+        if stepIndex == 0 { return minValue }
+        // This prevents the thumb from looking slightly off at maxValue
+        if stepIndex == numberOfSteps - 1 { return maxValue }
+        
+        return Double(stepIndex + 1) * stepDistance - (stepDistance / 2.0)
+    }
+    
+    func stepIndex(for value: Double) -> Int? {
+        guard numberOfSteps > 0 else { return nil }
+        
+        return Int(round((value - minValue) * Double(numberOfSteps - 1)))
+    }
+    
     // MARK: - Initializers
     
     public required init?(coder aDecoder: NSCoder) {
@@ -220,6 +224,8 @@ import UIKit
         super.init(frame: frame)
         initialSetup()
     }
+    
+    // MARK: - Private func
     
     private func initialSetup() {
         // The reason that I put the upperThumbLayer before the lowerThumbLayer is to make the

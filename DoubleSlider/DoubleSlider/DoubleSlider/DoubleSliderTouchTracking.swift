@@ -10,6 +10,8 @@ import UIKit
 
 extension DoubleSlider {
     
+    // MARK: - Private var
+    
     private var minimumSpaceBetweenThumbOrigins: Double {
         return stepDistance ?? 0.05
     }
@@ -81,10 +83,10 @@ extension DoubleSlider {
             let upperIndex = stepIndex(for: upperValue),
             lowerIndex >= upperIndex {
             
-            lowerTempValue = value(for: upperIndex - 1) ?? highestPositionAllowed
+            lowerTempValue = lowerValue
             
         // For when no steps are set
-        } else if lowerTempValue > highestPositionAllowed {
+        } else if numberOfSteps < 1, lowerTempValue > highestPositionAllowed {
             lowerTempValue = highestPositionAllowed
         }
         
@@ -107,10 +109,10 @@ extension DoubleSlider {
             let lowerIndex = stepIndex(for: lowerValue),
             upperIndex <= lowerIndex {
             
-            upperTempValue = value(for: lowerIndex + 1) ?? lowestPositionAllowed
+            upperTempValue = upperValue
             
         // For when no steps are set
-        } else if upperTempValue < lowestPositionAllowed {
+        } else if numberOfSteps < 1, upperTempValue < lowestPositionAllowed {
             upperTempValue = lowestPositionAllowed
         }
         
