@@ -43,8 +43,9 @@ extension DoubleSlider {
             var lowerTempValue = lowerValue + dragValue
             lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
             
-            if lowerTempValue > upperValue - minimumSpace {
-                lowerTempValue = upperValue - minimumSpace
+            let highestPositionAllowed = upperValue - minimumSpace
+            if lowerTempValue > highestPositionAllowed {
+                lowerTempValue = highestPositionAllowed
             }
             
             if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
@@ -57,8 +58,9 @@ extension DoubleSlider {
             var upperTempValue = upperValue + dragValue
             upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
             
-            if upperTempValue < lowerValue + minimumSpace {
-                upperTempValue = lowerValue + minimumSpace
+            let lowestPositionAllowed = lowerValue + minimumSpace
+            if upperTempValue < lowestPositionAllowed {
+                upperTempValue = lowestPositionAllowed
             }
             
             if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
