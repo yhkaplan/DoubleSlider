@@ -71,23 +71,25 @@ extension DoubleSlider {
         var lowerTempValue = lowerValue + dragValue
         lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
         
-        // For when steps are set without smoothStepping
+        // For step-like behavior
         if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
             lowerTempValue = steppedValue
         }
         
         let highestPositionAllowed = upperValue - minimumSpaceBetweenThumbOrigins
         
-        // For when steps are set with or without smoothStepping
+        // To prevent excessive overlap
+        if lowerTempValue > highestPositionAllowed {
+            lowerTempValue = highestPositionAllowed
+        }
+        
+        // To prevent a rare case in which 2 thumbs are barely near
+        // enough to register as the same stepIndex/label
         if let lowerIndex = stepIndex(for: lowerTempValue),
             let upperIndex = stepIndex(for: upperValue),
             lowerIndex >= upperIndex {
             
             lowerTempValue = lowerValue
-            
-        // For when no steps are set
-        } else if numberOfSteps < 1, lowerTempValue > highestPositionAllowed {
-            lowerTempValue = highestPositionAllowed
         }
         
         return lowerTempValue
@@ -97,23 +99,25 @@ extension DoubleSlider {
         var upperTempValue = upperValue + dragValue
         upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
         
-        // For when steps are set without smoothStepping
+        // For step-like behavior
         if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
             upperTempValue = steppedValue
         }
         
         let lowestPositionAllowed = lowerValue + minimumSpaceBetweenThumbOrigins
         
-        // For when steps are set with or without smoothStepping
+        // To prevent excessive overlap
+        if upperTempValue < lowestPositionAllowed {
+            upperTempValue = lowestPositionAllowed
+        }
+        
+        // To prevent a rare case in which 2 thumbs are barely near
+        // enough to register as the same stepIndex/label
         if let upperIndex = stepIndex(for: upperTempValue),
             let lowerIndex = stepIndex(for: lowerValue),
             upperIndex <= lowerIndex {
             
             upperTempValue = upperValue
-            
-        // For when no steps are set
-        } else if numberOfSteps < 1, upperTempValue < lowestPositionAllowed {
-            upperTempValue = lowestPositionAllowed
         }
         
         return upperTempValue
