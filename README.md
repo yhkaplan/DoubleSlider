@@ -30,3 +30,9 @@ Create a `Cartfile` that lists the framework and run `carthage update`. Follow t
 ```
 github "yhkaplan/DoubleSlider"
 ```
+
+## Todos
+* Add info about using IBDesignable and setting up
+* Fix rightmost label issue where the label is sticking to the right
+* Add long CocoaPods description
+* Fix badges
