@@ -44,15 +44,6 @@ extension DoubleSlider {
         CATransaction.commit()
     }
     
-    //TODO: think of a better name for this?
-    var stepDistance: CGFloat {
-        guard let stepDistanceAsDouble = stepDistanceAsDouble else {
-            return 0.0
-        }
-        
-        return bounds.width * CGFloat(stepDistanceAsDouble)
-    }
-    
     func positionForValue(value: Double) -> CGFloat {
         let widthDifference = bounds.width - thumbWidth
         return widthDifference * CGFloat(value - minValue) / CGFloat(maxValue - minValue) + (thumbWidth / 2.0)

@@ -63,7 +63,7 @@ import UIKit
     }
 
     private func value(for stepIndex: Int) -> Double? {
-        guard let stepDistanceAsDouble = stepDistanceAsDouble else {
+        guard let stepDistance = stepDistance else {
             return nil
         }
         
@@ -72,11 +72,10 @@ import UIKit
         // This prevents the thumb from looking slightly off at maxValue
         if stepIndex == numberOfSteps - 1 { return maxValue }
         
-        return Double(stepIndex + 1) * stepDistanceAsDouble - (stepDistanceAsDouble / 2.0)
+        return Double(stepIndex + 1) * stepDistance - (stepDistance / 2.0)
     }
     
-    //TODO: think of a better name for this
-    var stepDistanceAsDouble: Double? {
+    var stepDistance: Double? {
         guard numberOfSteps > 0 else { return nil }
         
         return maxValue / Double(numberOfSteps)

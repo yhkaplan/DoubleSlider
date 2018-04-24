@@ -89,9 +89,9 @@ extension DoubleSlider {
     // MARK: - Private funcs
     
     private func steppedValue(for value: Double) -> Double? {
-        guard let stepDist = stepDistanceAsDouble else { return nil }
+        guard let stepDistance = stepDistance else { return nil }
         
-        return round(value / stepDist) * stepDist
+        return round(value / stepDistance) * stepDistance
     }
     
     private func boundValue(value: Double, lowerValue: Double, upperValue: Double) -> Double {
