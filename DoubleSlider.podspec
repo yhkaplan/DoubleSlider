@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DoubleSlider"
-  s.version      = "0.20.1"
+  s.version      = "0.21.0"
   s.summary      = "A short description of DoubleSlider."
 
   # This description is used to generate tags and improve search results.
