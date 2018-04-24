@@ -37,14 +37,13 @@ extension DoubleSlider {
         if numberOfSteps > 0 {
             minimumSpace = 1.0 / Double(numberOfSteps)
         }
-        let halfMinSpace = minimumSpace / 2.0
         
         // Update values
         if lowerThumbLayer.isHighlighted {
             var lowerTempValue = lowerValue + dragValue
             lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
             
-            if (lowerTempValue + halfMinSpace) > (upperValue - halfMinSpace) {
+            if lowerTempValue > upperValue - minimumSpace {
                 lowerTempValue = upperValue - minimumSpace
             }
             
@@ -58,7 +57,7 @@ extension DoubleSlider {
             var upperTempValue = upperValue + dragValue
             upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
             
-            if (upperTempValue - halfMinSpace) < (lowerValue + halfMinSpace) {
+            if upperTempValue < lowerValue + minimumSpace {
                 upperTempValue = lowerValue + minimumSpace
             }
             
