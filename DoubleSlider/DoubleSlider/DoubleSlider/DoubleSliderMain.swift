@@ -62,7 +62,7 @@ import UIKit
         }
     }
 
-    private func value(for stepIndex: Int) -> Double? {
+    func value(for stepIndex: Int) -> Double? {
         guard let stepDistance = stepDistance else {
             return nil
         }

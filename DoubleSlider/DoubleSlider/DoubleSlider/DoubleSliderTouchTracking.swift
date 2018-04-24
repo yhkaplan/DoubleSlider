@@ -39,13 +39,23 @@ extension DoubleSlider {
             var lowerTempValue = lowerValue + dragValue
             lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
             
-            let highestPositionAllowed = upperValue - minimumSpace
-            if lowerTempValue > highestPositionAllowed {
-                lowerTempValue = highestPositionAllowed
-            }
-            
+            // For when steps are set without smoothStepping
             if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
                 lowerTempValue = steppedValue
+            }
+            
+            let highestPositionAllowed = upperValue - minimumSpace
+            
+            // For when steps are set with or without smoothStepping
+            if let lowerIndex = stepIndex(for: lowerTempValue),
+                let upperIndex = stepIndex(for: upperValue),
+                lowerIndex >= upperIndex {
+                
+                lowerTempValue = value(for: upperIndex - 1) ?? highestPositionAllowed
+                
+            // For when no steps are set
+            } else if lowerTempValue > highestPositionAllowed {
+                lowerTempValue = highestPositionAllowed
             }
             
             lowerValue = lowerTempValue
@@ -54,15 +64,25 @@ extension DoubleSlider {
             var upperTempValue = upperValue + dragValue
             upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
             
-            let lowestPositionAllowed = lowerValue + minimumSpace
-            if upperTempValue < lowestPositionAllowed {
-                upperTempValue = lowestPositionAllowed
-            }
-            
+            // For when steps are set without smoothStepping
             if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
                 upperTempValue = steppedValue
             }
             
+            let lowestPositionAllowed = lowerValue + minimumSpace
+            
+            // For when steps are set with or without smoothStepping
+            if let upperIndex = stepIndex(for: upperTempValue),
+                let lowerIndex = stepIndex(for: lowerValue),
+                upperIndex <= lowerIndex {
+                
+                upperTempValue = value(for: lowerIndex + 1) ?? lowestPositionAllowed
+            
+            // For when no steps are set
+            } else if upperTempValue < lowestPositionAllowed {
+                upperTempValue = lowestPositionAllowed
+            }
+
             upperValue = upperTempValue
         }
         
