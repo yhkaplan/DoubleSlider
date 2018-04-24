@@ -10,6 +10,12 @@ import UIKit
 
 extension DoubleSlider {
     
+    // MARK: - Private var
+    
+    private var minimumSpaceBetweenThumbOrigins: Double {
+        return stepDistance ?? 0.05
+    }
+    
     // MARK: - Touch tracking
     
     override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -17,6 +23,7 @@ extension DoubleSlider {
         
         if lowerThumbLayer.frame.contains(previousLocation) {
             lowerThumbLayer.isHighlighted = true
+            
         } else if upperThumbLayer.frame.contains(previousLocation) {
             upperThumbLayer.isHighlighted = true
         }
@@ -33,40 +40,12 @@ extension DoubleSlider {
         
         previousLocation = location
         
-        var minimumSpace: Double = 0.05
-        if numberOfSteps > 0 {
-            minimumSpace = 1.0 / Double(numberOfSteps)
-        }
-        let halfMinSpace = minimumSpace / 2.0
-        
         // Update values
         if lowerThumbLayer.isHighlighted {
-            var lowerTempValue = lowerValue + dragValue
-            lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
-            
-            if (lowerTempValue + halfMinSpace) > (upperValue - halfMinSpace) {
-                lowerTempValue = upperValue - minimumSpace
-            }
-            
-            if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
-                lowerTempValue = steppedValue
-            }
-            
-            lowerValue = lowerTempValue
+            lowerValue = lowerValueAdjusted(for: dragValue)
             
         } else if upperThumbLayer.isHighlighted {
-            var upperTempValue = upperValue + dragValue
-            upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
-            
-            if (upperTempValue - halfMinSpace) < (lowerValue + halfMinSpace) {
-                upperTempValue = lowerValue + minimumSpace
-            }
-            
-            if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
-                upperTempValue = steppedValue
-            }
-            
-            upperValue = upperTempValue
+            upperValue = upperValueAdjusted(for: dragValue)
         }
         
         // Declare that a value was updated, called continuously
@@ -88,10 +67,66 @@ extension DoubleSlider {
     
     // MARK: - Private funcs
     
-    private func steppedValue(for value: Double) -> Double? {
-        guard let stepDist = stepDistanceAsDouble else { return nil }
+    private func lowerValueAdjusted(for dragValue: Double) -> Double {
+        var lowerTempValue = lowerValue + dragValue
+        lowerTempValue = boundValue(value: lowerTempValue, lowerValue: minValue, upperValue: upperValue)
         
-        return round(value / stepDist) * stepDist
+        // For step-like behavior
+        if !smoothStepping, let steppedValue = steppedValue(for: lowerTempValue) {
+            lowerTempValue = steppedValue
+        }
+        
+        let highestPositionAllowed = upperValue - minimumSpaceBetweenThumbOrigins
+        
+        // To prevent excessive overlap
+        if lowerTempValue > highestPositionAllowed {
+            lowerTempValue = highestPositionAllowed
+        }
+        
+        // To prevent a rare case in which 2 thumbs are barely near
+        // enough to register as the same stepIndex/label
+        if let lowerIndex = stepIndex(for: lowerTempValue),
+            let upperIndex = stepIndex(for: upperValue),
+            lowerIndex >= upperIndex {
+            
+            lowerTempValue = lowerValue
+        }
+        
+        return lowerTempValue
+    }
+    
+    private func upperValueAdjusted(for dragValue: Double) -> Double {
+        var upperTempValue = upperValue + dragValue
+        upperTempValue = boundValue(value: upperTempValue, lowerValue: lowerValue, upperValue: maxValue)
+        
+        // For step-like behavior
+        if !smoothStepping, let steppedValue = steppedValue(for: upperTempValue) {
+            upperTempValue = steppedValue
+        }
+        
+        let lowestPositionAllowed = lowerValue + minimumSpaceBetweenThumbOrigins
+        
+        // To prevent excessive overlap
+        if upperTempValue < lowestPositionAllowed {
+            upperTempValue = lowestPositionAllowed
+        }
+        
+        // To prevent a rare case in which 2 thumbs are barely near
+        // enough to register as the same stepIndex/label
+        if let upperIndex = stepIndex(for: upperTempValue),
+            let lowerIndex = stepIndex(for: lowerValue),
+            upperIndex <= lowerIndex {
+            
+            upperTempValue = upperValue
+        }
+        
+        return upperTempValue
+    }
+    
+    private func steppedValue(for value: Double) -> Double? {
+        guard let stepDistance = stepDistance else { return nil }
+        
+        return round(value / stepDistance) * stepDistance
     }
     
     private func boundValue(value: Double, lowerValue: Double, upperValue: Double) -> Double {
