@@ -61,7 +61,7 @@ import UIKit
             updateLayerFrames()
         }
     }
-
+    
     func value(for stepIndex: Int) -> Double? {
         guard let stepDistance = stepDistance else {
             return nil
