@@ -32,11 +32,7 @@ extension DoubleSlider {
         let dragValue = (maxValue - minValue) * dragDistance / Double(bounds.width - thumbWidth)
         
         previousLocation = location
-        
-        var minimumSpace: Double = 0.05
-        if numberOfSteps > 0 {
-            minimumSpace = 1.0 / Double(numberOfSteps)
-        }
+        let minimumSpace = stepDistance ?? 0.05
         
         // Update values
         if lowerThumbLayer.isHighlighted {
