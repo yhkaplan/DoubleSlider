@@ -44,7 +44,7 @@ class DoubleSliderTests: XCTestCase {
     }
     
     private func setupDoubleSlider() {
-        let height: CGFloat = 34.0 //TODO: make this the default height
+        let height: CGFloat = 38.0 //TODO: make this the default height
         let width = view.bounds.width - 40.0
         let frame = CGRect(x: backgroundView.bounds.minX,
                            y: backgroundView.bounds.midY - (height / 2.0),
