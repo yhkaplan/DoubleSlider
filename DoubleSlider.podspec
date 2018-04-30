@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DoubleSlider"
-  s.version      = "0.23.0"
+  s.version      = "0.24.0"
   s.summary      = "DoubleSlider is a version of UISlider that has two draggable points —useful for choosing two points in a range."
   #s.description  = "DoubleSlider is a version of UISlider that has two draggable points —useful for choosing two points in a range."
   s.homepage     = "https://github.com/yhkaplan/doubleslider"
