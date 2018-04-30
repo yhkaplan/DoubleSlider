@@ -1,7 +1,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat<Paste>)](swift.org)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/DoubleSlider.svg)  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/DoubleSlider)
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](swift.org)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DoubleSlider.svg)](https://img.shields.io/cocoapods/v/DoubleSlider.svg)
+[![Platform](https://img.shields.io/cocoapods/p/DoubleSlider.svg?style=flat)](http://cocoapods.org/pods/DoubleSlider)
 # DoubleSlider
 DoubleSlider is a version of UISlider that has two draggable points —useful for choosing two points in a range. 
 
@@ -32,7 +32,8 @@ github "yhkaplan/DoubleSlider"
 ```
 
 ## Todos
+* Add screenshots/GIF
 * Add info about using IBDesignable and setting up
-* Fix rightmost label issue where the label is sticking to the right
 * Add long CocoaPods description
 * Fix badges
+* Make upgrade script that bumps version number, commits, pushes, and runs pod trunk push
