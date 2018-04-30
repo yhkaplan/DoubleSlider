@@ -144,11 +144,25 @@ import UIKit
         }
     }
     
-    // This value is the farthest left that a label can move
-    @IBInspectable public lazy var lowerLabelMargin: CGFloat = 0.0
+    // The minimum distance from minX of the bounds that the lowerLabel can move to
+    // Make this a positive value to allow the label to go beyond the bounds
+    // Make this negative value to make the label stay away from the edge of the bounds
+    @IBInspectable public var lowerLabelMarginOffset: CGFloat = 0.0
+
+    // The maximum distance from maxX of the bounds that the upperLabel can move to
+    // Make this a positive value to allow the label to go beyond the bounds
+    // Make this negative value to make the label stay away from the edge of the bounds
+    @IBInspectable public var upperLabelMarginOffset: CGFloat = 0.0
     
-    // This value is the farthest right that a label can move
-    @IBInspectable public lazy var upperLabelMargin: CGFloat = frame.width
+    // The furthest left that a label can move
+    var lowerLabelMargin: CGFloat {
+        return bounds.minX - lowerLabelMarginOffset
+    }
+    
+    // The furthest right that a label can move
+    var upperLabelMargin: CGFloat {
+        return bounds.maxX + upperLabelMarginOffset
+    }
     
     public weak var labelDelegate: DoubleSliderLabelDelegate? {
         didSet {
