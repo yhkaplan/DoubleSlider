@@ -31,7 +31,7 @@ extension DoubleSlider {
         upperThumbLayer.frame = CGRect(x: upperThumbMinX, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
-        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: 18.0) //TODO: may be incorrect
+        trackLayer.frame = bounds.insetBy(dx: layerInset, dy: 18.0)
         trackLayer.setNeedsDisplay()
         
         updateLabelValues()
@@ -87,7 +87,6 @@ extension DoubleSlider {
         }
     }
     
-    // TODO: split into smaller funcs
     private func updateLabelPositions() {
         let newMinLabelCenter = labelCenter(for: lowerThumbLayer)
         let newMaxLabelCenter = labelCenter(for: upperThumbLayer)
@@ -109,7 +108,6 @@ extension DoubleSlider {
             if maxLabel.frame.maxX > upperLabelMargin {
                 maxLabel.frame.origin.x = frame.width - maxLabel.frame.width - 4.0
             }
-            
             
         } else { // Positions conflict between labels
             let increaseAmount: CGFloat = minimumSpaceBetweenLabels - newSpaceBetweenLabels
