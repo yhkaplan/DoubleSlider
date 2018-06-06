@@ -3,5 +3,5 @@
 // used by DoubleSlider conform to. It ensures they
 // contain a weak delegate to DoubleSlider
 protocol DoubleSliderLayer: class {
-    weak var doubleSlider: DoubleSlider? { get set }
+    var doubleSlider: DoubleSlider? { get set }
 }
