@@ -12,32 +12,32 @@ import UIKit
 // control. Its main methods are marked open, so they can be subclassed and
 // overridden to add or change behaviors
 @IBDesignable open class DoubleSlider: UIControl {
-    
+
     // Public vars
-    
+
     // Track values
     public private(set) var minValue: Double = 0.0
-    
+
     public private(set) var maxValue: Double = 1.0
-    
+
     @IBInspectable public var lowerValue: Double = 0.2 {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     @IBInspectable public var upperValue: Double = 0.8 {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     @IBInspectable public var numberOfSteps: Int = 0 {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     // lowerValue as a step index (int)
     public var lowerValueStepIndex: Int {
         // Return 0 if steps don't exist
@@ -63,7 +63,7 @@ import UIKit
             updateLayerFrames()
         }
     }
-    
+
     // This bool turns off traditional stepping behavior,
     // allowing for custom labels set at given intervals
     // that don't "jump" from step to step, but instead
@@ -73,7 +73,7 @@ import UIKit
             updateLayerFrames()
         }
     }
-    
+
     // This inset is shared between the thumb layers and
     // the track layer so the track layer doesn't extend
     // beyond the thumbs. Also, this value makes sure
@@ -84,7 +84,7 @@ import UIKit
             updateLayerFrames()
         }
     }
-    
+
     // Override this to show only one label, etc.
     @IBInspectable open var labelsAreHidden: Bool = false {
         didSet {
@@ -92,30 +92,30 @@ import UIKit
             maxLabel.isHidden = labelsAreHidden
         }
     }
-    
+
     // MARK: - Colors
-    
+
     @IBInspectable public var trackTintColor: UIColor = Colors.defaultGray {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
-    
+
     @IBInspectable public var trackHighlightTintColor: UIColor = Colors.defaultBlue {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
-    
+
     @IBInspectable public var thumbTintColor: UIColor = Colors.defaultWhite {
         didSet {
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
         }
     }
-    
+
     // MARK: - General appearance
-    
+
     @IBInspectable public var roundedness: CGFloat = 1.0 {
         didSet {
             trackLayer.setNeedsDisplay()
@@ -123,27 +123,27 @@ import UIKit
             upperThumbLayer.setNeedsDisplay()
         }
     }
-    
+
     // This is a class var so it can be overridden at will
-    public class var labelAttributes: [NSAttributedStringKey: Any] {
+    public class var labelAttributes: [NSAttributedString.Key: Any] {
         return [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
-            NSAttributedStringKey.foregroundColor: Colors.textGray
+            .font: UIFont.systemFont(ofSize: 14.0),
+            .foregroundColor: Colors.textGray
         ]
     }
-    
+
     @IBInspectable public var minimumSpaceBetweenLabels: CGFloat = 5.0 {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     @IBInspectable public var spaceBetweenThumbAndLabel: CGFloat = 18.0 {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     // The minimum distance from minX of the bounds that the lowerLabel can move to
     // Make this a positive value to allow the label to go beyond the bounds
     // Make this negative value to make the label stay away from the edge of the bounds
@@ -153,94 +153,94 @@ import UIKit
     // Make this a positive value to allow the label to go beyond the bounds
     // Make this negative value to make the label stay away from the edge of the bounds
     @IBInspectable public var upperLabelMarginOffset: CGFloat = 0.0
-    
+
     // The furthest left that a label can move
     var lowerLabelMargin: CGFloat {
         return bounds.minX - lowerLabelMarginOffset
     }
-    
+
     // The furthest right that a label can move
     var upperLabelMargin: CGFloat {
         return bounds.maxX + upperLabelMarginOffset
     }
-    
+
     public weak var labelDelegate: DoubleSliderLabelDelegate? {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     public weak var valueChangedDelegate: DoubleSliderValueChangedDelegate?
-    
+
     public weak var editingDidEndDelegate: DoubleSliderEditingDidEndDelegate?
-    
+
     // Render components
     public let trackLayer = DoubleSliderTrackLayer()
     public let lowerThumbLayer = DoubleSliderThumbLayer()
     public let upperThumbLayer = DoubleSliderThumbLayer()
     public let minLabel = CATextLayer()
     public let maxLabel = CATextLayer()
-    
+
     var previousLocation = CGPoint()
-    
+
     open var thumbWidth: CGFloat {
         return CGFloat(bounds.height)
     }
-    
+
     override open var frame: CGRect {
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     override open var bounds: CGRect {
         // Without this, the sizing in AutoLayout would be off
         didSet {
             updateLayerFrames()
         }
     }
-    
+
     // MARK: - Internal funcs/vars
-    
+
     var stepDistance: Double? {
         guard numberOfSteps > 0 else { return nil }
-        
+
         return maxValue / Double(numberOfSteps)
     }
-    
+
     func value(for stepIndex: Int) -> Double? {
         guard let stepDistance = stepDistance else {
             return nil
         }
-        
+
         // This prevents the thumb from looking slightly off at minValue
         if stepIndex == 0 { return minValue }
         // This prevents the thumb from looking slightly off at maxValue
         if stepIndex == numberOfSteps - 1 { return maxValue }
-        
+
         return Double(stepIndex + 1) * stepDistance - (stepDistance / 2.0)
     }
-    
+
     func stepIndex(for value: Double) -> Int? {
         guard numberOfSteps > 0 else { return nil }
-        
+
         return Int(round((value - minValue) * Double(numberOfSteps - 1)))
     }
-    
+
     // MARK: - Initializers
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialSetup()
     }
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initialSetup()
     }
-    
+
     // MARK: - Private func
-    
+
     private func initialSetup() {
         // The reason that I put the upperThumbLayer before the lowerThumbLayer is to make the
         // lowerThumbLayer be above the upperThumbLayer in the z axis, which reflects the priority
@@ -252,7 +252,7 @@ import UIKit
             if let caLayer = caLayer as? DoubleSliderLayer {
                 caLayer.doubleSlider = self
             }
-            
+
             caLayer.contentsScale = UIScreen.main.scale
             layer.addSublayer(caLayer)
         }

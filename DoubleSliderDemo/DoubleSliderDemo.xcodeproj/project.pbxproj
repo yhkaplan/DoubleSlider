@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		036F406020760DF9002AC7C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036F405F20760DF8002AC7C0 /* ViewController.swift */; };
-		03763D762072443D000AFB80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D752072443D000AFB80 /* AppDelegate.swift */; };
 		03763D7D2072443D000AFB80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03763D7C2072443D000AFB80 /* Assets.xcassets */; };
 		03763D802072443D000AFB80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03763D7E2072443D000AFB80 /* LaunchScreen.storyboard */; };
 		03763D8820724463000AFB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03763D8720724463000AFB80 /* Extensions.swift */; };
 		03763D8C2072448A000AFB80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03763D8B2072448A000AFB80 /* Main.storyboard */; };
+		A35B53B921564E1700F0C4B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B53B821564E1700F0C4B9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,12 +31,12 @@
 /* Begin PBXFileReference section */
 		036F405F20760DF8002AC7C0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03763D722072443D000AFB80 /* DoubleSliderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleSliderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03763D752072443D000AFB80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03763D7C2072443D000AFB80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03763D7F2072443D000AFB80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03763D812072443D000AFB80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03763D8720724463000AFB80 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		03763D8B2072448A000AFB80 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A35B53B821564E1700F0C4B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,8 @@
 		03763D742072443D000AFB80 /* DoubleSliderDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A35B53B821564E1700F0C4B9 /* AppDelegate.swift */,
 				03763D8720724463000AFB80 /* Extensions.swift */,
-				03763D752072443D000AFB80 /* AppDelegate.swift */,
 				036F405F20760DF8002AC7C0 /* ViewController.swift */,
 				03763D8B2072448A000AFB80 /* Main.storyboard */,
 				03763D7C2072443D000AFB80 /* Assets.xcassets */,
@@ -109,7 +109,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = yhkaplan;
 				TargetAttributes = {
 					03763D712072443D000AFB80 = {
@@ -170,9 +170,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35B53B921564E1700F0C4B9 /* AppDelegate.swift in Sources */,
 				036F406020760DF9002AC7C0 /* ViewController.swift in Sources */,
 				03763D8820724463000AFB80 /* Extensions.swift in Sources */,
-				03763D762072443D000AFB80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +204,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -211,6 +212,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -244,6 +246,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -261,6 +264,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -268,6 +272,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -293,6 +298,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -308,7 +314,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yhkaplan.DoubleSliderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -324,7 +330,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = yhkaplan.DoubleSliderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

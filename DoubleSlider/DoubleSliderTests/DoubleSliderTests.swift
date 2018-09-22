@@ -37,8 +37,8 @@ class DoubleSliderTests: XCTestCase {
     }
     
     private func makeLabels() {
-        for i in stride(from: 0, to: 300, by: 10) {
-            labels.append("$\(i)")
+        for num in stride(from: 0, to: 300, by: 10) {
+            labels.append("$\(num)")
         }
         labels.append("No limit")
     }
