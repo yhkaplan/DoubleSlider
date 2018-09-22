@@ -16,21 +16,21 @@ import QuartzCore
 // this one
 public class DoubleSliderTrackLayer: CALayer, DoubleSliderLayer {
     weak var doubleSlider: DoubleSlider?
-    
-    override public func draw(in ctx: CGContext) {
+
+    public override func draw(in ctx: CGContext) {
         guard let slider = doubleSlider else { return }
-        
+
         // Clip
         let cornerRadius = bounds.height * slider.roundedness / 2.0
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         ctx.addPath(path.cgPath)
         ctx.fillPath()
-        
+
         // Fill track
         ctx.setFillColor(slider.trackTintColor.cgColor)
         ctx.addPath(path.cgPath)
         ctx.fillPath()
-        
+
         // Fill highlighted range
         ctx.setFillColor(slider.trackHighlightTintColor.cgColor)
         let lowerValuePosition = slider.positionForValue(value: slider.lowerValue)

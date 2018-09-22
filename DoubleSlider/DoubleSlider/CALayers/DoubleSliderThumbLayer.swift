@@ -17,34 +17,34 @@ import QuartzCore
 // this one
 public class DoubleSliderThumbLayer: CALayer, DoubleSliderLayer {
     weak var doubleSlider: DoubleSlider?
-    
+
     var isHighlighted: Bool = false {
         didSet {
             setNeedsDisplay()
         }
     }
-    
-    override public func draw(in ctx: CGContext) {
+
+    public override func draw(in ctx: CGContext) {
         guard let slider = doubleSlider else { return }
-        
+
         let inset = slider.layerInset
         let thumbFrame = bounds.insetBy(dx: inset, dy: inset)
         let cornerRadius = thumbFrame.height * slider.roundedness / 2.0
         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
-        
+
         // Fill with shadow
         let shadowColor = Colors.defaultGray.cgColor
         ctx.setShadow(offset: CGSize(width: 0.0, height: 2.0), blur: 4.0, color: shadowColor)
         ctx.setFillColor(slider.thumbTintColor.cgColor)
         ctx.addPath(thumbPath.cgPath)
         ctx.fillPath()
-        
+
         // Outline
         ctx.setStrokeColor(shadowColor)
         ctx.setLineWidth(0.25)
         ctx.addPath(thumbPath.cgPath)
         ctx.strokePath()
-        
+
         // Set color for highlighted thumb picker (move somewhere else)??
         if isHighlighted {
             ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)

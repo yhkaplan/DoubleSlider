@@ -128,7 +128,7 @@ import UIKit
     public class var labelAttributes: [NSAttributedString.Key: Any] {
         return [
             .font: UIFont.systemFont(ofSize: 14.0),
-            .foregroundColor: Colors.textGray
+            .foregroundColor: Colors.textGray,
         ]
     }
 
@@ -187,13 +187,13 @@ import UIKit
         return CGFloat(bounds.height)
     }
 
-    override open var frame: CGRect {
+    open override var frame: CGRect {
         didSet {
             updateLayerFrames()
         }
     }
 
-    override open var bounds: CGRect {
+    open override var bounds: CGRect {
         // Without this, the sizing in AutoLayout would be off
         didSet {
             updateLayerFrames()
