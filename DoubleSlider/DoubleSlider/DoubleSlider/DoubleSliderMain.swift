@@ -128,7 +128,7 @@ import UIKit
     public class var labelAttributes: [NSAttributedString.Key: Any] {
         return [
             .font: UIFont.systemFont(ofSize: 14.0),
-            .foregroundColor: Colors.textGray,
+            .foregroundColor: Colors.textGray
         ]
     }
 
