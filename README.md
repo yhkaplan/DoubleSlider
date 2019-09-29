@@ -10,6 +10,7 @@ DoubleSlider is a version of UISlider that has two draggable points —useful fo
 - Xcode 9.3+
 
 ## Screenshots
+![demo](demo.gif)
 
 ## Installation
 
