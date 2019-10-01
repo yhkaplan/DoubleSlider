@@ -10,6 +10,7 @@ DoubleSlider is a version of UISlider that has two draggable points —useful fo
 - Xcode 9.3+
 
 ## Screenshots
+![demo](demo.gif)
 
 ## Installation
 
@@ -32,8 +33,8 @@ github "yhkaplan/DoubleSlider"
 ```
 
 ## Todos
-* Add screenshots/GIF
-* Add info about using IBDesignable and setting up
-* Add long CocoaPods description
-* Fix badges
+ - [x] Add screenshots/GIF
+ - [ ] Add info about using IBDesignable and setting up
+ - [ ] Add long CocoaPods description
+ - [ ] Fix badges
 * Make upgrade script that bumps version number, commits, pushes, and runs pod trunk push
