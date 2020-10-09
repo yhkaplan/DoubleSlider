@@ -7,6 +7,8 @@
 //
 
 import QuartzCore
+import UIKit
+import Foundation
 
 // DoubleSliderThumbLayer represents the each of the draggable
 // thumb layers that indicate the minimum and maximum values

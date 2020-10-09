@@ -6,6 +6,8 @@
 //  Copyright © 2018年 yhkaplan. All rights reserved.
 //
 
+import Foundation
+
 extension Double {
     
     // Rounds double to two decimal places

@@ -7,6 +7,7 @@
 //
 
 import QuartzCore
+import UIKit
 
 // DoubleSliderTrackLayer represents the colorized space between
 // the two thumb layers

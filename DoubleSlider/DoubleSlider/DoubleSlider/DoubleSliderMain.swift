@@ -125,10 +125,10 @@ import UIKit
     }
     
     // This is a class var so it can be overridden at will
-    public class var labelAttributes: [NSAttributedStringKey: Any] {
+    public class var labelAttributes: [NSAttributedString.Key: Any] {
         return [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
-            NSAttributedStringKey.foregroundColor: Colors.textGray
+            .font: UIFont.systemFont(ofSize: 14.0),
+            .foregroundColor: Colors.textGray
         ]
     }
     
