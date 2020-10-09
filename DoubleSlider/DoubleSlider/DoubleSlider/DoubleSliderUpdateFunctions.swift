@@ -38,8 +38,8 @@ extension DoubleSlider {
         updateLabelSizes()
         updateLabelPositions()
         
-        minLabel.alignmentMode = kCAAlignmentCenter
-        maxLabel.alignmentMode = kCAAlignmentCenter
+        minLabel.alignmentMode = .center
+        maxLabel.alignmentMode = .center
 
         CATransaction.commit()
     }
