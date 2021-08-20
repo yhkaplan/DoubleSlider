@@ -2,7 +2,7 @@
 // This protocol allows you to display a custom label
 // for each step index selected. Labels must be set to on
 // and the number of steps must be set.
-public protocol DoubleSliderLabelDelegate: class {
+public protocol DoubleSliderLabelDelegate: AnyObject {
     func labelForStep(at index: Int) -> String?
 }
 
@@ -13,13 +13,13 @@ public protocol DoubleSliderLabelDelegate: class {
 // This protocol allows you to use a Swiftier delegate pattern
 // rather than rely on notifications for updating values
 // Equivalent to `valueChanged` notification
-public protocol DoubleSliderValueChangedDelegate: class {
+public protocol DoubleSliderValueChangedDelegate: AnyObject {
     func valueChanged(for doubleSlider: DoubleSlider)
 }
 
 // This protocol allows you to use a Swiftier delegate pattern
 // rather than rely on notifications for updating values
 // Equivalent to `editingDidEnd` notification
-public protocol DoubleSliderEditingDidEndDelegate: class {
+public protocol DoubleSliderEditingDidEndDelegate: AnyObject {
     func editingDidEnd(for doubleSlider: DoubleSlider)
 }
