@@ -1,0 +1,10 @@
+name: Build
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+    - uses: action/checkout@v2
+    - run: swift --version; make build
