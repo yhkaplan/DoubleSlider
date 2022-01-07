@@ -1,5 +1,5 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift 5.5](https://img.shields.io/badge/Swift-5.2-orange.svg?style=flat)](swift.org)
+[![Swift 5.5](https://img.shields.io/badge/Swift-5.5-orange.svg?style=flat)](swift.org)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DoubleSlider.svg)](https://img.shields.io/cocoapods/v/DoubleSlider.svg)
 [![Platform](https://img.shields.io/cocoapods/p/DoubleSlider.svg?style=flat)](http://cocoapods.org/pods/DoubleSlider)
 # DoubleSlider
